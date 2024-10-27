@@ -38,6 +38,7 @@ ul {
     height: 80px;
     /* border: 1px solid; */
     background: #000;
+    border-bottom: 1px solid #222222;
 
     display: flex;
     align-items: center;
@@ -57,7 +58,6 @@ ul {
     display: flex;
     align-items: center;
     padding: 0 0 0 16px;
-    box-sizing: border-box;
 }
 .hamber_btn {
     width: 40px;
@@ -152,14 +152,14 @@ ul {
 .side_menu {
     width: 240px;
     height: calc(100vh - 80px);
-    border: 1px solid;
+    border-right: 1px solid #2b2b2b;
     padding: 0px 5px;
     background: #000;
     box-sizing: border-box;
     
     position: fixed;
     top: 80px;
-    z-index: 999;
+    z-index: 99;
 }
 .side_nav {
     width: 100%;
@@ -310,7 +310,6 @@ ul {
 
 .main {
     width: calc(100% - 240px);
-    /* height: 3000px; */
     background-color: #000;
 
     margin: 80px 0 0 240px;
@@ -322,9 +321,12 @@ ul {
 /////////////////////////////////////////////////////////////
 */
 
+
+/* /////////////////////  around_new  /////////////////// */
+
 .main_around {
     background: #000;
-    height: 3000px;
+    /* height: 3000px; */
 }
 .ma_chart_box {
     width: 100%;
@@ -364,6 +366,180 @@ ul {
     font-weight: 900;
     color: #fff;
 }
+
+/* /////////////////////  around_famous  /////////////////// */
+
+.ma_famous_box {
+    width: 400px;
+    height: 300px;
+    /* background-color: rgb(46, 46, 46); */
+}
+.maf_item {
+    width: 100%;
+    height: 70px;
+    border: 1px solid #000;
+    box-sizing: border-box;
+
+    display: flex;
+}
+.mafi_img {
+    width: 70px;
+    height: 70px;
+    font-size: 0;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.mafi_img > img {
+    width: 60px;
+}
+.mafi_updown {
+    width: 20px;
+    padding: 0 2px;
+}
+.mafi_updown > svg {
+    fill: green;
+}
+.mafi_rank_box {
+    width: 50px;
+    display: flex;
+}
+.mafi_rank {
+    padding-left: 5px;
+    color: #fff;
+    font-size: 17px;
+
+    display: flex;
+    justify-items: center;
+    align-items: center;
+}
+.mafi_title_box {
+    width: 220px;
+    height: 100%;
+    padding-left: 10px;
+
+    display: flex;
+    flex-wrap: wrap;
+    align-content: center;
+    gap: 5px;
+}
+.mafi_title {
+    width: 100%;
+    font-size: 17px;
+    color: #fff;
+}
+.mafi_s_title {
+    width: 100%;
+    font-size: 16px;
+    font-weight: 900;
+    color: #6d6d6d;
+}
+
+#fam_box_0 > .maf_item:nth-child(2) > .mafi_rank_box > .mafi_updown > svg,
+#fam_box_1 > .maf_item:nth-child(1) > .mafi_rank_box > .mafi_updown > svg,
+#fam_box_1 > .maf_item:nth-child(4) > .mafi_rank_box > .mafi_updown > svg,
+#fam_box_2 > .maf_item:nth-child(3) > .mafi_rank_box > .mafi_updown > svg,
+#fam_box_4 > .maf_item:nth-child(2) > .mafi_rank_box > .mafi_updown > svg,
+#fam_box_5 > .maf_item:nth-child(4) > .mafi_rank_box > .mafi_updown > svg,
+#fam_box_6 > .maf_item:nth-child(4) > .mafi_rank_box > .mafi_updown > svg,
+#fam_box_7 > .maf_item:nth-child(1) > .mafi_rank_box > .mafi_updown > svg,
+#fam_box_9 > .maf_item:nth-child(2) > .mafi_rank_box > .mafi_updown > svg {
+    transform: rotateZ(180deg);
+    fill: red;
+}
+
+/* /////////////////////  around_genre  /////////////////// */
+
+.ma_gen_box {
+    width: 300px;
+    height: 300px;
+
+    display: flex;
+    flex-wrap: wrap;
+}
+.mag_item {
+    width: 100%;
+    height: 60px;
+    border-radius: 5px;
+    overflow: hidden;
+
+    display: flex;
+    cursor: pointer;
+}
+.mag_color {
+    width: 5%;
+    height: 100%;
+}
+.mag_txt {
+    width: 95%;
+    height: 100%;
+    font-size: 15px;
+    font-weight: 900;
+    padding-left: 20px;
+    color: #fff;
+    background: #282828;
+
+    display: flex;
+    align-items: center;
+}
+
+/* /////////////////////  around_genre  /////////////////// */
+
+.ma_vid_box {
+    width: 300px;
+    overflow: hidden;
+
+    display: flex;
+    flex-wrap: wrap;
+}
+.mav_img_box {
+    width: 100%;
+    height: 250px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+.mav_hover {
+    width: 100%;
+    height: 100%;
+    transition: all 0.3s;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.mav_hover > svg {
+    width: 70px;
+    height: 70px;
+    opacity: 0;
+    transition: all 0.3s;
+}
+.mav_img_box:hover > .mav_hover {
+    background-color: rgba(0,0,0,0.5);
+}
+.mav_img_box:hover > .mav_hover > svg {
+    opacity: 1;
+}
+.mav_title {
+    width: 100%;
+    color: #fff;
+    font-size: 17px;
+    padding: 10px 0 0 0;
+}
+.mav_title_b {
+    width: 100%;
+    color: #6d6d6d;
+    font-size: 16px;
+    font-weight: 900;
+    padding: 5px 0 0 0 ;
+
+    cursor: pointer;
+}
+.mav_title_b:hover {
+    text-decoration: underline;
+}
+
+
 
 /* 
 /////////////////////////////////////////////////////////////
@@ -684,7 +860,7 @@ ul {
 /* /////////////////////////// 재생바 중앙 ///////////////////////////////// */
 
 .pb_center {
-    width: 60%;
+    width: 70%;
     height: 100%;
     /* background-color: aquamarine; */
 
@@ -792,7 +968,7 @@ ul {
     padding: 0 10px 0 10px;
     cursor: pointer;
 }
-.volume_icon {
+.volume_icon, .muted_icon{
     padding-left: 25px;
 }
 .muted_icon {
@@ -1023,6 +1199,7 @@ ul {
 }
 .mli_img > img {
     width: 80%;
+    cursor: pointer;
 }
 .mli_txt {
     width: 80%;
@@ -1048,6 +1225,9 @@ ul {
     line-height: 65px;
     color: #b9b9b9;
 }
+.music_list_item:hover {
+    background-color: #363636;
+}
 .music_list_item:hover .mli_img {
     background: #000;
 }
@@ -1057,6 +1237,7 @@ ul {
 .music_list_item:hover .mli_play {
     display: block;
 }
+
 
 /* 
 /////////////////////////////////////////////////////////////
