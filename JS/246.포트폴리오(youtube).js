@@ -21,7 +21,7 @@ $(document).ready(function(){
         $('.side_storage_f').css({display:'block'})
     })
 
-    ////////////////   클릭 위치 계산함수    //////////////////
+    ////////////////   플레이바 클릭 위치 계산함수    //////////////////
 
     let barWidth;
     let barOffset;
@@ -37,11 +37,15 @@ $(document).ready(function(){
         // 클릭 위치를 백분율로 계산
         clickPercentage = (clickX / barWidth)
     }
+
     let volume_value;
     let v_volume = $('.volume_bar_hover');
     let muted = $('.volume_icon');
     let muted_on = $('.muted_icon')
     let chk = false;
+
+        ////////////////   볼륨바 클릭 위치 계산함수    //////////////////
+
     function volume_pos(){
         $('.volume_bar_active').css({
             width: `${clickPercentage * 100}%`
@@ -53,7 +57,7 @@ $(document).ready(function(){
 
 ////////////////   볼륨 조절 관련 이벤트    //////////////////
 
-    $('.volume_bar_hover').mousedown(function(event){
+    $('.volume_bar_hover').mousedown(function(){
         $('.volume_circle').css({
             transform: 'translate(-50%,-50%) scale(1.5)'
         })
@@ -71,7 +75,7 @@ $(document).ready(function(){
         volume_value = clickPercentage;
         volume_pos()
     })
-    $('.volume_bar_hover').mousemove(function(event){
+    $('.volume_bar_hover').mousemove(function(){
         click_pos($(this))
         if(chk) {
             // 클릭된 위치가 만약 0이면 muted 의 if문 실행
@@ -86,16 +90,16 @@ $(document).ready(function(){
             volume_pos()
         }
     })
-    $('.volume_bar_hover').mouseup(function(event){ 
+    $('.volume_bar_hover').mouseup(function(){ 
         $('.volume_circle').css({
             transform: 'translate(-50%,-50%) scale(1)'
         })
         chk=false; 
     })
-    $('.pb_right_control').mouseenter(function(event){ 
+    $('.pb_right_control').mouseenter(function(){ 
         chk=false; 
     })
-    $('.pb_right_control').mouseleave(function(event){ 
+    $('.pb_right_control').mouseleave(function(){ 
         chk=false; 
     })
 
@@ -122,6 +126,8 @@ $(document).ready(function(){
             left: `${volume_value}`
         })
     })
+
+    ////////////////   음소거 관련 클릭이벤트    //////////////////
 
     let play_interval;
     let time_play;
@@ -163,6 +169,7 @@ $(document).ready(function(){
     ////////////////  무한루프 클릭이벤트    //////////////////
 
     let loop = true;
+
     $('.loop').click(function(){
         if(loop == true){
             $('#loop').css({
@@ -293,6 +300,7 @@ $(document).ready(function(){
 
         $('#v_player').on('ended', function() {
             $('.pb_next').trigger('click')
+            $('#v_player')[0].volume = clickPercentage;
         });
     }
 
@@ -314,7 +322,6 @@ $(document).ready(function(){
 
         music_player_title(tmpp1, tmpp2, tmpp3)
     })
-
     $('.jpop').click(function(){
         linked = $(this).index()
         streaming(3)
@@ -329,7 +336,6 @@ $(document).ready(function(){
 
         music_player_title(tmpp1, tmpp2, tmpp3)
     })
-    
     $('.pop').click(function(){
         linked = $(this).index()
         streaming(4)
@@ -406,6 +412,24 @@ $(document).ready(function(){
     let btn = true;
     let cate_chk;
     let list_chk;
+    $('.pb_center').click(function(){
+        $('.player_updown').trigger('click')
+    })
+
+    $('.player_updown').click(function(){
+        if(btn == true){
+            $(this).css({ transform: 'rotateZ(180deg)' })
+            $('.main_player').css({ height: '91.5%' })
+            $('body').css({ overflow: 'hidden' })
+            btn = false;
+        }
+        else if(btn == false){
+            $(this).css({ transform: 'rotateZ(0deg)' })
+            $('.main_player').css({ height: '0' })
+            $('body').css({ overflow: 'visible' })
+            btn = true;
+        }
+    });
 
     // 이미지 클릭 후 플레이어창 띄우면 리스트 업데이트
     function make_player_list(){
@@ -427,21 +451,6 @@ $(document).ready(function(){
             music_list_item(list_chk, 4)
         }
     } 
-
-    $('.player_updown').click(function(){
-        if(btn == true){
-            $(this).css({ transform: 'rotateZ(180deg)' })
-            $('.main_player').css({ height: '91.5%' })
-            $('body').css({ overflow: 'hidden' })
-            btn = false;
-        }
-        else if(btn == false){
-            $(this).css({ transform: 'rotateZ(0deg)' })
-            $('.main_player').css({ height: '0' })
-            $('body').css({ overflow: 'visible' })
-            btn = true;
-        }
-    });
 
     // 앞으로 넘어가기
 
@@ -490,20 +499,21 @@ $(document).ready(function(){
     let d_height = $(document).height();
     let w_height = $(window).height();
     let add_length = 0;
+    let scroll_ok = true;
 
     $(window).scroll(function(){
         let s_bot = $(window).scrollTop() + w_height
         console.log(d_height, w_height, s_bot)
         add_length = 1
 
-        if(d_height <= (s_bot + 1)) {
+        if(d_height <= (s_bot + 1) && scroll_ok == true) {
             load_scroll_noicon(ADD_LIST[0].length)
             for(let i=0; i<3; i++) {
                 load_scroll_item(ADD_LIST[add_length].length, add_length)
                 add_length += 1
             }
             d_height = $(document).height();
-            ttt()
+            swiper_event()
         }
     })
 
@@ -520,7 +530,6 @@ $(document).ready(function(){
         })
     })
     
-    // $('.music_list_item').click(function(event){
     $(document).on('click','.music_list_item', function(){
         $('.player_L').empty()
         let tmp1 = $(this).find('.mli_title').text()
@@ -532,23 +541,24 @@ $(document).ready(function(){
         cate_chk = $('#v_player').attr('class').split('_')[0]
 
         if(cate_chk == 'kpop'){
-            linked = $(this).index()
+            linked = $(this).index() - 1
             streaming(2)
             play_time()
         }
         else if (cate_chk == 'jpop'){
-            linked = $(this).index()
+            linked = $(this).index() - 1
             streaming(3)
             play_time()
         }
         else if (cate_chk == 'pop'){
-            linked = $(this).index()
+            linked = $(this).index() - 1
             streaming(4)
             play_time()
         }
-    })
+    }) // 제이쿼리 방식으로 안돼서 자바스크립트 방식으로 변경
 
     let mm_play = true;
+
     $(document).on('click','.curr_picture > img', function(){
 
         if(mm_play == true){
@@ -565,12 +575,15 @@ $(document).ready(function(){
             $('.pb_play').trigger('click')
             mm_play = true;
         }
-    })
+    }) // 이하 동일, 플레이어 창에서의 클릭이벤트는 전부 자바스크립트 방식으로 변경해야할듯. 제이쿼리 방식이 안먹음
     
-    ttt()
+    swiper_event()
 
 ///////////////////   main_around   /////////////////////
+
     $('#side_home').click(function(){
+        $('html, body').scrollTop(0);
+        scroll_ok = true;
         $('.main').empty()
         d_height = $(document).height();
     
@@ -581,7 +594,7 @@ $(document).ready(function(){
         load_music_item_kpop($(ITEM_LIST)[2].length)
         load_music_item_jpop($(ITEM_LIST)[3].length)
         load_music_item_pop($(ITEM_LIST)[4].length)
-        ttt()
+        swiper_event()
 
         // 메인페이지 클릭 이벤트
         $('.kpop').click(function(){
@@ -632,15 +645,36 @@ $(document).ready(function(){
             music_player_title(tmpp1, tmpp2, tmpp3)
         })
     })
-    
     $('#side_around').click(function(){
+        $('html, body').scrollTop(0);
+        scroll_ok = false;
+        let count1 = 0;
+        let count2 = 4;
+        let count3 = 0;
+        let count11 = 0;
+        let count22 = 4;
+        let count33 = 0;
         $('.main').empty()
         around_main()
-        around_item_box($(AR_LIST)[0].length)
-        around_item_box_list($(AR_LIST)[1].length)
-        ttt()
+        around_item_box(AR_LIST[0].length)
+        around_item_box_list(AR_LIST[1].length)
+        around_famous_list(AR_LIST[2].length)
+        around_gen_list(AR_LIST[3].length)
+        for(let i=0; i<10; i++){
+            around_famous_item(count1, count2, count3)
+            count1 += 4
+            count2 += 4
+            count3 += 1
+        }
+        for(let i=0; i<10; i++){
+            around_gen_item(count11, count22, count33)
+            count11 += 4
+            count22 += 4
+            count33 += 1
+        }
+        around_vid_item(AR_LIST[4].length)
+        swiper_event()
     })
-
 
 });
 

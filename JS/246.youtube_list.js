@@ -33,9 +33,9 @@ const ITEM_LIST = [
     ],
     // 뮤직차트 리스트 음악목록 (j-pop)
     [
-        {id: 'jpop_0', src: 'Hunchgray', duration: '250', b_title: 'Hunch Gray', m_title: 'ZUTOMAYO • Hunch Gray' },
+        {id: 'jpop_0', src: 'hunchgray', duration: '250', b_title: 'Hunch Gray', m_title: 'ZUTOMAYO • Hunch Gray' },
         {id: 'jpop_1', src: 'spiral', duration: '242', b_title: 'spiral', m_title: 'LONGMAN' },
-        {id: 'jpop_2', src: 'TATTOO', duration: '297', b_title: 'TATTOO', m_title: 'OFFICIAL HIGE DANDISM' },
+        {id: 'jpop_2', src: 'tattoo', duration: '297', b_title: 'TATTOO', m_title: 'OFFICIAL HIGE DANDISM' },
         {id: 'jpop_3', src: 'omoino1', duration: '281', b_title: '幾億光年 - Ikuokukonen', m_title: 'Omoinotake' },
         {id: 'jpop_4', src: 'omoino2', duration: '297', b_title: 'One Day', m_title: 'Omoinotake' },
         {id: 'jpop_5', src: 'rain', duration: '297', b_title: 'Rain', m_title: 'SEKAI NO OWARI' },
@@ -118,6 +118,8 @@ const AR_LIST = [
     [
         {id: 'ar_new', src: 'arnew', b_title: '새 앨범 및 싱글' },
         {id: 'ar_famous', src: 'arfamous', b_title: '인기곡' },
+        {id: 'ar_gen', src: 'argen', b_title: '분위기 및 장르' },
+        {id: 'ar_vid', src: 'arvid', b_title: '새 뮤직 비디오' },
     ],
     // 새 앨범 및 싱글
     [
@@ -154,7 +156,93 @@ const AR_LIST = [
         {id: 'ar_fam_8', src: 'arfam8', rank: '9', b_title: 'Small girl(feat. D.O)', m_title: '이영지 및 도경수' },
         {id: 'ar_fam_9', src: 'arfam9', rank: '10', b_title: 'Magnetic', m_title: 'ILLIT • SUPER REAL ME' },
         {id: 'ar_fam_10', src: 'arfam10', rank: '11', b_title: 'Armageddon', m_title: 'aespa' },
-    ]
+        {id: 'ar_fam_11', src: 'arfam11', rank: '12', b_title: '소나기', m_title: '이클립스 • 선재 업고 튀어 OST' },
+        {id: 'ar_fam_12', src: 'arfam12', rank: '13', b_title: '슬픈 초대장', m_title: '순순희 (지환)' },
+        {id: 'ar_fam_13', src: 'arfam13', rank: '14', b_title: 'SOS (Sped Up version)', m_title: '피프티 피프티' },
+        {id: 'ar_fam_14', src: 'arfam14', rank: '15', b_title: 'Heavy Is the Crown', m_title: 'Linkin Park' },
+        {id: 'ar_fam_15', src: 'arfam15', rank: '16', b_title: '천상연 (선녀외전 OST)', m_title: '이창섭' },
+        {id: 'ar_fam_16', src: 'arfam16', rank: '17', b_title: 'CRAZY', m_title: 'LE SSERAFIM' },
+        {id: 'ar_fam_17', src: 'arfam17', rank: '18', b_title: 'Pretender', m_title: 'Official Hige Dandism' },
+        {id: 'ar_fam_18', src: 'arfam18', rank: '19', b_title: 'MEOW', m_title: 'MEOVV' },
+        {id: 'ar_fam_19', src: 'arfam19', rank: '20', b_title: '녹아내려요 Melt Down', m_title: 'DAY6' },
+        {id: 'ar_fam_20', src: 'arfam20', rank: '21', b_title: '나는 아픈 건 딱 질색이니까', m_title: '(여자)아이들' },
+        {id: 'ar_fam_21', src: 'arfam21', rank: '22', b_title: 'RISE', m_title: 'League of Legends OST' },
+        {id: 'ar_fam_22', src: 'arfam22', rank: '23', b_title: '별별별 (See That?)', m_title: 'NMIXX' },
+        {id: 'ar_fam_23', src: 'arfam23', rank: '24', b_title: 'Sticky', m_title: 'KISS OF LIFE' },
+        {id: 'ar_fam_24', src: 'arfam24', rank: '25', b_title: 'Gravity', m_title: '피프티 피프티' },
+        {id: 'ar_fam_25', src: 'arfam25', rank: '26', b_title: '처음 본 순간(영화 사랑의 하츄핑 OST)', m_title: '윈터 (WINTER)' },
+        {id: 'ar_fam_26', src: 'arfam26', rank: '27', b_title: '클락션(Klaxon)', m_title: '(여자)아이들' },
+        {id: 'ar_fam_27', src: 'arfam27', rank: '28', b_title: 'Love wins all', m_title: '아이유(IU)' },
+        {id: 'ar_fam_28', src: 'arfam28', rank: '29', b_title: 'Touch', m_title: 'KATSEYE' },
+        {id: 'ar_fam_29', src: 'arfam29', rank: '30', b_title: '가짜 아이돌', m_title: 'QWER' },
+        {id: 'ar_fam_30', src: 'arfam30', rank: '31', b_title: 'Congratulations', m_title: 'DAY6(데이식스)' },
+        {id: 'ar_fam_31', src: 'arfam31', rank: '32', b_title: 'Bubble Gum', m_title: 'NewJeans' },
+        {id: 'ar_fam_32', src: 'arfam32', rank: '33', b_title: 'Home', m_title: '임영웅' },
+        {id: 'ar_fam_33', src: 'arfam33', rank: '34', b_title: '해야 (HEYA)', m_title: 'IVE (아이브)' },
+        {id: 'ar_fam_34', src: 'arfam34', rank: '35', b_title: '온기', m_title: '임영웅' },
+        {id: 'ar_fam_35', src: 'arfam35', rank: '36', b_title: '에피소드', m_title: '이무진' },
+        {id: 'ar_fam_36', src: 'arfam36', rank: '37', b_title: 'Drama', m_title: 'aespa' },
+        {id: 'ar_fam_37', src: 'arfam37', rank: '38', b_title: '첫 만남은 계획대로 되지 않아', m_title: 'TWS' },
+        {id: 'ar_fam_38', src: 'arfam38', rank: '39', b_title: 'MANIAC', m_title: 'VIVIZ (비비지)' },
+        {id: 'ar_fam_39', src: 'arfam39', rank: '40', b_title: '숲', m_title: '최유리' },
+    ],
+    // 분위기 및 장르
+    [
+        {id:'ar_gen_0', backg: 'ffe780' , title: '힘이 필요할 때' },
+        {id:'ar_gen_1', backg: 'e24b00' , title: '힙합' },
+        {id:'ar_gen_2', backg: 'ffc200' , title: '출퇴큰 & 등하교' },
+        {id:'ar_gen_3', backg: 'cc0000' , title: '사랑 노래' },
+        {id:'ar_gen_4', backg: '0092bf' , title: '국내댄스' },
+        {id:'ar_gen_5', backg: 'e24b00' , title: '한국 힙합' },
+        {id:'ar_gen_6', backg: 'cc0000' , title: '록' },
+        {id:'ar_gen_7', backg: 'ff8d40' , title: '운동할 때' },
+        {id:'ar_gen_8', backg: 'ff78ff' , title: 'J팝' },
+        {id:'ar_gen_9', backg: 'cc0000' , title: '국내 록/얼터너티브' },
+        {id:'ar_gen_10', backg: '8c8c8c' , title: '슬픔' },
+        {id:'ar_gen_11', backg: 'ffe780' , title: '계절 변화를 위한 테마' },
+        {id:'ar_gen_12', backg: 'a4ffa4' , title: '행복한 기분' },
+        {id:'ar_gen_13', backg: 'a4c5ff' , title: '국내 발라드' },
+        {id:'ar_gen_14', backg: 'b47bff' , title: '파티 음악' },
+        {id:'ar_gen_15', backg: 'a4c5ff' , title: '편안한 분위기' },
+        {id:'ar_gen_16', backg: '7b3edb' , title: '국내 R&B' },
+        {id:'ar_gen_17', backg: '606060' , title: '연말연시' },
+        {id:'ar_gen_18', backg: 'cccccc' , title: '인디 & 얼터네이티브' },
+        {id:'ar_gen_19', backg: '4deeff' , title: 'OST & 뮤지컬' },
+        {id:'ar_gen_20', backg: '7b3edb' , title: 'R&B 및 소울' },
+        {id:'ar_gen_21', backg: 'a4ffa4' , title: '2010년대' },
+        {id:'ar_gen_22', backg: '7b3edb' , title: '잠잘 때' },
+        {id:'ar_gen_23', backg: 'cccccc' , title: '집중할 때' },
+        {id:'ar_gen_24', backg: '4c5cff' , title: '재즈' },
+        {id:'ar_gen_25', backg: '00a513' , title: '포크/어쿠스틱' },
+        {id:'ar_gen_26', backg: '0092bf' , title: '가족' },
+        {id:'ar_gen_27', backg: 'ff78ff' , title: 'Pop' },
+        {id:'ar_gen_28', backg: '00a513' , title: '크리스마스' },
+        {id:'ar_gen_29', backg: 'a4ffa4' , title: '2000년대' },
+        {id:'ar_gen_30', backg: 'cccccc' , title: '클래식' },
+        {id:'ar_gen_31', backg: 'a4ffa4' , title: '1980년대' },
+        {id:'ar_gen_32', backg: 'a4ffa4' , title: '1990년대' },
+        {id:'ar_gen_33', backg: 'a4ffa4' , title: '트로트' },
+        {id:'ar_gen_34', backg: '0092bf' , title: '댄스 & 일렉트로닉' },
+        {id:'ar_gen_35', backg: '1d1d1d' , title: '블랙 라이브즈 매터' },
+        {id:'ar_gen_36', backg: 'a4ffa4' , title: '1970년대 음악' },
+        {id:'ar_gen_37', backg: 'a4ffa4' , title: '1960년대' },
+        {id:'ar_gen_38', backg: '337dff' , title: '컨트리 & 아메리카나' },
+        {id:'ar_gen_39', backg: 'ffc200' , title: '라틴' },
+    ],
+    // 새 뮤직 비디오
+    [
+        {id:'ar_video_0', src:'video0', title:'BIG Naughty X Kid Milli - Freestylin Official MV', b_title:'H1GHR MUSIC • 조회수 67만회'},
+        {id:'ar_video_1', src:'video1', title:'Supernova (KENZIE RE:WORKS)', b_title: 'aespa 및 KENZIE • 조회수 17만회'},
+        {id:'ar_video_2', src:'video2', title:'토네이도', b_title:'기안84 • 저허;스 3.1만회'},
+        {id:'ar_video_3', src:'video3', title:'맹그로브', b_title:'윤하 • 조회수 4.2만회'},
+        {id:'ar_video_4', src:'video4', title:'SEE YOU', b_title:'Loco • 조회수 18만회'},
+        {id:'ar_video_5', src:'video5', title:'네모네모', b_title:'YENA (최예나) • 조회수 26만회'},
+        {id:'ar_video_6', src:'video6', title:'가슴으로 운다', b_title:'윤하 • 조회수 1.8만회'},
+        {id:'ar_video_7', src:'video7', title:'청춘만화', b_title:'이무진 • 조회수 125만회'},
+        {id:'ar_video_8', src:'video8', title:'크리스토퍼, 이영지 - Trouble [Live Performance Video]', b_title:'워너뮤직코리아 • 조회수 407만회'},
+        {id:'ar_video_9', src:'video9', title:'Sentimental Love', b_title:'Min Jiwoon • 조회수 74만회'},
+        {id:'ar_video_10', src:'video10', title:'안녕', b_title:'어반자카파 (URBAN ZAKAPA) • 조회수 31만회'}
+    ],
 ]
 
 ////////////////   왼쪽 사이드 메뉴바 관련   //////////////////
@@ -438,7 +526,6 @@ function music_list_item(count, tmp1){
 function around_main(){
     let tmp = `
     <div class="main_around contents_area">
-    
     </div>
     `
     $('.main').append(tmp)
@@ -457,7 +544,7 @@ function around_item_box(count){
                 <div class="mp_more">+ more</div>
             </div>
         </div>
-        <div class="swiper mySwiper${i}"><div class="mp_music_box swiper-wrapper"></div>
+        <div class="swiper arSwiper${i}"><div class="mp_music_box swiper-wrapper"></div>
         </div>
         </div>
     `
@@ -490,33 +577,77 @@ function around_item_box_list(count){
 }
 
 function around_famous_list(count){
-    for(let i=0; i<count; i++){
+    for(let i=0; i<(count/4); i++){
         let tmp = `
-            <div class="ma_famous_box swiper-slide" id="">
-                <div class="maf_item">
-                    <div class="mafi_img">
-                        <img src="./img/youtube_music/famous/내이름맑음.jpg" alt="">
+            <div class="ma_famous_box swiper-slide" id="fam_box_${i}">
+            </div>
+        `
+        $(`#ar_famous .mp_music_box`).append(tmp)
+    }
+}
+
+function around_famous_item(count1, count2, count3){
+    for(let i=count1; i<count2; i++){
+        let tmp = `
+            <div class="maf_item">
+                <div class="mafi_img">
+                    <img src="./img/youtube_music/famous/${AR_LIST[2][i].src}.jpg" alt="">
+                </div>
+                <div class="mafi_rank_box">
+                    <div class="mafi_updown">
+                        <svg viewBox="0 0 24 24" preserveAspectRatio="xMidYMid meet" focusable="false" class="style-scope yt-icon" style="pointer-events: none; display: block; width: 100%; height: 100%;"><g class="style-scope yt-icon"><path d="M18,15H6l6-6L18,15z" class="style-scope yt-icon"></path></g></svg>
                     </div>
-                    <div class="mafi_rank_box">
-                        <div class="mafi_updown">
-                            <svg viewBox="0 0 24 24" preserveAspectRatio="xMidYMid meet" focusable="false" class="style-scope yt-icon" style="pointer-events: none; display: block; width: 100%; height: 100%;"><g class="style-scope yt-icon"><path d="M18,15H6l6-6L18,15z" class="style-scope yt-icon"></path></g></svg>
-                        </div>
-                        <div class="mafi_rank">1</div>
-                    </div>
-                    <div class="mafi_title_box">
-                        <div class="mafi_title">내 이름 맑음</div>
-                        <div class="mafi_s_title">QWER</div>
-                    </div>
+                    <div class="mafi_rank">${AR_LIST[2][i].rank}</div>
+                </div>
+                <div class="mafi_title_box">
+                    <div class="mafi_title">${AR_LIST[2][i].b_title}</div>
+                    <div class="mafi_s_title">${AR_LIST[2][i].m_title}</div>
                 </div>
             </div>
         `
-
-
-    $(`#ar_famous .mp_music_box`).append(tmp)
+        $(`#fam_box_${count3}`).append(tmp)
     }
-
-
 }
+
+function around_gen_list(count){
+    for(let i=0; i<(count/4); i++){
+        console.log(AR_LIST[3][i].backg)
+        let tmp = `
+            <div class="ma_gen_box swiper-slide" id="gen_box_${i}">
+            </div>
+        `
+        $(`#ar_gen .mp_music_box`).append(tmp)
+    }
+}
+
+function around_gen_item(count1, count2, count3){
+    for(let i=count1; i<count2; i++){
+        let tmp = `
+            <div class="mag_item">
+                <div class="mag_color" style="background: #${AR_LIST[3][i].backg};"></div>
+                <div class="mag_txt">${AR_LIST[3][i].title}</div>
+            </div>
+        `
+        $(`#gen_box_${count3}`).append(tmp)
+    }
+}
+
+function around_vid_item(count){
+    for(let i=0; i<count; i++){
+        let tmp = `
+            <div class="ma_vid_box swiper-slide" id="vid_box_${i}">
+                <div class="mav_img_box" style="background: url(./img/youtube_music/musicvideo/${AR_LIST[4][i].src}.jpg) no-repeat center / cover;">
+                <div class="mav_hover">
+                    <svg viewBox="0 0 24 24" preserveAspectRatio="xMidYMid meet" focusable="false" class="style-scope tp-yt-iron-icon" style="pointer-events: none; display: block;"><g class="style-scope tp-yt-iron-icon"><path fill="#fff" d="M6,4l12,8L6,20V4z" class="style-scope tp-yt-iron-icon"></path></g></svg></div>
+                </div>
+                <div class="mav_title">${AR_LIST[4][i].title}</div>
+                <div class="mav_title_b">${AR_LIST[4][i].b_title}</div>
+            </div>
+        `
+        $(`#ar_vid .mp_music_box`).append(tmp)
+    }
+}
+
 /////////////// main_around 페이지 구성 함수//////////////////
 
 load_items(7)
