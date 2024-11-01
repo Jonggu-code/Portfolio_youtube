@@ -6,7 +6,14 @@ var swiper2;
 var swiper3;
 var swiper4;
 var swiper5;
-function ttt() {
+var swiper6;
+var swiper7;
+var swiper8;
+var swiper9;
+var swiper10;
+var swiper11;
+
+function swiper_event() {
     swiper = new Swiper(".mySwiper0", {
         slidesPerView: 5,
         slidesPerGroup: 5,
@@ -89,6 +96,102 @@ function ttt() {
         navigation: {
             nextEl: ".swiper-button-next5",
             prevEl: ".swiper-button-prev5",
+        },
+        effect: 'slide'
+    });
+    swiper6 = new Swiper(".arSwiper0", {
+        slidesPerView: 5,
+        slidesPerGroup: 5,
+        spaceBetween: 30,
+        pagination: {
+            el: ".swiper-pagination",
+            clickable: true,
+        },
+        navigation: {
+            nextEl: ".swiper-button-next0",
+            prevEl: ".swiper-button-prev0",
+        },
+        effect: 'slide'
+    });
+    swiper7 = new Swiper(".arSwiper1", {
+        slidesPerView: 3,
+        slidesPerGroup: 3,
+        spaceBetween: 1,
+        pagination: {
+            el: ".swiper-pagination",
+            clickable: true,
+        },
+        navigation: {
+            nextEl: ".swiper-button-next1",
+            prevEl: ".swiper-button-prev1",
+        },
+        effect: 'slide'
+    });
+    swiper8 = new Swiper(".arSwiper2", {
+        slidesPerView: 4,
+        slidesPerGroup: 3,
+        spaceBetween: 30,
+        pagination: {
+            el: ".swiper-pagination",
+            clickable: true,
+        },
+        navigation: {
+            nextEl: ".swiper-button-next2",
+            prevEl: ".swiper-button-prev2",
+        },
+        effect: 'slide'
+    });
+    swiper9 = new Swiper(".arSwiper3", {
+        slidesPerView: 3,
+        slidesPerGroup: 3,
+        spaceBetween: 30,
+        pagination: {
+            el: ".swiper-pagination",
+            clickable: true,
+        },
+        navigation: {
+            nextEl: ".swiper-button-next3",
+            prevEl: ".swiper-button-prev3",
+        },
+        effect: 'slide'
+    });
+    swiper10 = new Swiper(".stSwiper0", {
+        slidesPerView: 2,
+        slidesPerGroup: 2,
+        breakpoints: {
+            1299: {
+                slidesPerView: 3,
+                slidesPerGroup: 3 
+            }
+        },
+        spaceBetween: 0,
+        pagination: {
+            el: ".swiper-pagination",
+            clickable: true,
+        },
+        navigation: {
+            nextEl: ".swiper-button-next3",
+            prevEl: ".swiper-button-prev3",
+        },
+        effect: 'slide'
+    });
+    swiper10 = new Swiper(".stSwiper1", {
+        slidesPerView: 2,
+        slidesPerGroup: 2,
+        breakpoints: {
+            1299: {
+                slidesPerView: 3,
+                slidesPerGroup: 3
+            }
+        },
+        spaceBetween: 0,
+        pagination: {
+            el: ".swiper-pagination",
+            clickable: true,
+        },
+        navigation: {
+            nextEl: ".swiper-button-next3",
+            prevEl: ".swiper-button-prev3",
         },
         effect: 'slide'
     });

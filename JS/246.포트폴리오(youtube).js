@@ -1,6 +1,31 @@
 $(document).ready(function(){
 
-    ////////////  사이드메뉴(홈, 둘러보기, 보관함) 클릭 이벤트  //////////////////
+    ////////////  검색창 이벤트  //////////////////
+
+    $('#find_input').focus(function(){
+        $('.search_box').css({
+            background: '#090909'
+        })
+    }).blur(function(){
+        $('.search_box').css({
+            background: 'rgba(255,255,255,0.2)'
+        })
+    })
+
+    $('#find_input').on("input", function(){
+        if($(this).val().length > 0){
+            $('.search_null').show();
+        }
+        else {
+            $('.search_null').hide();
+        }
+    });
+    $('.search_null').click(function(){
+        $('#find_input').val("");
+        $(this).hide();
+    })
+
+////////////  사이드메뉴(홈, 둘러보기, 보관함) 클릭 이벤트  //////////////////
 
     $('#side_home').click(function(){
         $('.side_icon').css({display:'block'})
@@ -21,7 +46,7 @@ $(document).ready(function(){
         $('.side_storage_f').css({display:'block'})
     })
 
-    ////////////////   클릭 위치 계산함수    //////////////////
+////////////////   플레이바 클릭 위치 계산함수    //////////////////
 
     let barWidth;
     let barOffset;
@@ -37,11 +62,15 @@ $(document).ready(function(){
         // 클릭 위치를 백분율로 계산
         clickPercentage = (clickX / barWidth)
     }
+
     let volume_value;
     let v_volume = $('.volume_bar_hover');
     let muted = $('.volume_icon');
     let muted_on = $('.muted_icon')
     let chk = false;
+
+////////////////   볼륨바 클릭 위치 계산함수    //////////////////
+
     function volume_pos(){
         $('.volume_bar_active').css({
             width: `${clickPercentage * 100}%`
@@ -53,7 +82,7 @@ $(document).ready(function(){
 
 ////////////////   볼륨 조절 관련 이벤트    //////////////////
 
-    $('.volume_bar_hover').mousedown(function(event){
+    $('.volume_bar_hover').mousedown(function(){
         $('.volume_circle').css({
             transform: 'translate(-50%,-50%) scale(1.5)'
         })
@@ -71,7 +100,7 @@ $(document).ready(function(){
         volume_value = clickPercentage;
         volume_pos()
     })
-    $('.volume_bar_hover').mousemove(function(event){
+    $('.volume_bar_hover').mousemove(function(){
         click_pos($(this))
         if(chk) {
             // 클릭된 위치가 만약 0이면 muted 의 if문 실행
@@ -86,16 +115,16 @@ $(document).ready(function(){
             volume_pos()
         }
     })
-    $('.volume_bar_hover').mouseup(function(event){ 
+    $('.volume_bar_hover').mouseup(function(){ 
         $('.volume_circle').css({
             transform: 'translate(-50%,-50%) scale(1)'
         })
         chk=false; 
     })
-    $('.pb_right_control').mouseenter(function(event){ 
+    $('.pb_right_control').mouseenter(function(){ 
         chk=false; 
     })
-    $('.pb_right_control').mouseleave(function(event){ 
+    $('.pb_right_control').mouseleave(function(){ 
         chk=false; 
     })
 
@@ -123,13 +152,14 @@ $(document).ready(function(){
         })
     })
 
+////////////////   음소거 관련 클릭이벤트    //////////////////
+
     let play_interval;
     let time_play;
-    let bar_inc = 0;
     let time_m = 0;
     let time_s = '00';
 
-    ////////////////   하단 재생바 클릭이벤트    //////////////////
+////////////////   하단 재생바 클릭이벤트    //////////////////
 
     $('.play_bar_hover').click(function(event) {
         $('.pb_pause').trigger('click')
@@ -160,9 +190,10 @@ $(document).ready(function(){
         bar_inc = clickPercentage_main100
     })
 
-    ////////////////  무한루프 클릭이벤트    //////////////////
+////////////////  무한루프 클릭이벤트    //////////////////
 
     let loop = true;
+
     $('.loop').click(function(){
         if(loop == true){
             $('#loop').css({
@@ -192,7 +223,8 @@ $(document).ready(function(){
             fill: '#8b8b8b'
         })
     })
-     ////////////////  랜덤재생 클릭이벤트  //////////////////
+
+////////////////  랜덤재생 클릭이벤트  //////////////////
     
     let random = true;
     $('.random').click(function(){
@@ -217,7 +249,7 @@ $(document).ready(function(){
         }
     })
 
-    ////////////////  음소거 클릭이벤트  //////////////////
+////////////////  음소거 클릭이벤트  //////////////////
 
     $('.volume_icon').click(function(){
         $('.volume_icon').css({
@@ -243,11 +275,35 @@ $(document).ready(function(){
         })
     })
 
-    ////////////////   플레이타임 폰트 생성   //////////////////
+////////////////  좋아요, 싫어요 클릭  //////////////////
+let thumbup = true;
+let thumbdn = true;
+    $('.pb_btn_up').click(function(){
+        if(thumbup == true){
+            $('.thumbUp_b').hide()
+            $('.thumbUp_f').show()
+            thumbup = false;
+        }
+        else if(thumbup == false){
+            $('.thumbUp_f').hide()
+            $('.thumbUp_b').show()
+            thumbup = true;
+        }
+    })
+    $('.pb_btn_down').click(function(){
+        if(thumbdn == true){
+            $('.thumbDn_b').hide()
+            $('.thumbDn_f').show()
+            thumbdn = false;
+        }
+        else if(thumbdn == false){
+            $('.thumbDn_f').hide()
+            $('.thumbDn_b').show()
+            thumbdn = true;
+        }
+    })
 
-    let time = document.getElementsByClassName('pb_play_time')[0]
-
-    ////////////////   이미지 클릭 이벤트    //////////////////
+////////////////   음악재생 이벤트    //////////////////
     
     let mm_time = 0;
     let ss_time = 0;
@@ -256,8 +312,7 @@ $(document).ready(function(){
     function streaming(cate) {
         $('.pb_play').css({ display: 'none' })
         $('.pb_pause').css({ display: 'block' })
-        clearInterval(play_interval)
-        clearInterval(time_play)
+        mm_play = true
         let img_link = `<img src="./img/youtube_music/${ITEM_LIST[cate][linked].src}.jpg" alt=""></img>`
         let music_box = `<video src="./media/${ITEM_LIST[cate][linked].src}.mp4" class="${ITEM_LIST[cate][linked].id}" id="v_player"></video>`
 
@@ -268,15 +323,19 @@ $(document).ready(function(){
         $('.pb_title_b').html(`${ITEM_LIST[cate][linked].b_title}`)
         $('.pb_title_m').html(`${ITEM_LIST[cate][linked].m_title}`)
         $('#v_player')[0].play()
-
-        time_m = 0;
-        time_s = '00';
-        bar_inc = 0;
         
         movie_leng = $(ITEM_LIST)[cate][linked].duration
         mm_time = Math.floor(movie_leng / 60)
         ss_time = Math.floor(movie_leng % 60)
         ss_time = ss_time<10?"0"+ss_time:ss_time
+
+        time_m = 0;
+        time_s = '00';
+        bar_inc = 0;
+        play_time()
+        music_play()
+        clearInterval(play_interval)
+        clearInterval(time_play)
 
         $('.player_bar').css({
             display: 'flex'
@@ -293,20 +352,36 @@ $(document).ready(function(){
 
         $('#v_player').on('ended', function() {
             $('.pb_next').trigger('click')
+            $('#v_player')[0].volume = volume_value;
+            let tmp1 = $('.pb_title_b').text()
+            let tmp2 = $('.pb_title_m').text()
+            let tmp3 = $('.pb_thumbnail > img').attr('src')
+            $('.music_title').text(tmp1)
+            $('.music_sub').text(tmp2)
+            $('.curr_picture > img').attr('src', tmp3)
         });
     }
 
 ////////////////   뮤직 장르별 클릭 이벤트    //////////////////
 
+$(document).on('click', '.arnew', function(){
+    linked = $(this).index()
+    streaming(5)
+    make_player_list()
+
+    $('.player_L').empty()
+    let tmpp1 = $(this).find('.mp_music_big_title').text()
+    let tmpp2 = $(this).find('.mp_music_mini_title').text()
+    let tmpp3 = $(this).find('.mp_music_img > img').attr('src')
+
+    music_player_title(tmpp1, tmpp2, tmpp3)
+})
     $('.kpop').click(function(){
         linked = $(this).index()
         streaming(2)
-        play_time()
-        music_play()
         make_player_list()
 
         // 뮤직 플레이어 메인 이미지 수정
-
         $('.player_L').empty()
         let tmpp1 = $(this).find('.mp_music_big_title').text()
         let tmpp2 = $(this).find('.mp_music_mini_title').text()
@@ -314,12 +389,9 @@ $(document).ready(function(){
 
         music_player_title(tmpp1, tmpp2, tmpp3)
     })
-
     $('.jpop').click(function(){
         linked = $(this).index()
         streaming(3)
-        play_time()
-        music_play()
         make_player_list()
 
         $('.player_L').empty()
@@ -329,12 +401,9 @@ $(document).ready(function(){
 
         music_player_title(tmpp1, tmpp2, tmpp3)
     })
-    
     $('.pop').click(function(){
         linked = $(this).index()
         streaming(4)
-        play_time()
-        music_play()
         make_player_list()
 
         $('.player_L').empty()
@@ -345,8 +414,8 @@ $(document).ready(function(){
         music_player_title(tmpp1, tmpp2, tmpp3)
     })
     
-////////////////   하단 플레이바 막대기 조절 함수    //////////////////
-
+////////////////   하단 플레이바 재생길이 함수    //////////////////
+let bar_inc = 0;
     function music_play() {
         $('.bar_circle').css({
             left: `${bar_inc}%`
@@ -361,7 +430,8 @@ $(document).ready(function(){
         }
     }
     
-////////////////   하단 플레이바 플레이타임 함수    //////////////////
+////////////////   하단 플레이바 시간초 함수    //////////////////
+let time = document.getElementsByClassName('pb_play_time')[0]
 
     function play_time() { 
         time.innerHTML = `${time_m}:${time_s} / ${mm_time}:${ss_time}`
@@ -407,26 +477,24 @@ $(document).ready(function(){
     let cate_chk;
     let list_chk;
 
-    // 이미지 클릭 후 플레이어창 띄우면 리스트 업데이트
-    function make_player_list(){
-        cate_chk = $('#v_player').attr('class').split('_')[0]
-
-        if(cate_chk == 'kpop'){
-            $('.music_list_item').remove()
-            list_chk = $('.kpop').length
-            music_list_item(list_chk, 2)
-        }
-        else if (cate_chk == 'jpop'){
-            $('.music_list_item').remove()
-            list_chk = $('.jpop').length
-            music_list_item(list_chk, 3)
-        }
-        else if (cate_chk == 'pop'){
-            $('.music_list_item').remove()
-            list_chk = $('.pop').length
-            music_list_item(list_chk, 4)
-        }
-    } 
+    // 하단 플레이바 클릭시 플레이어 창 띄우기
+    $('.pb_center').click(function(){
+        $('.player_updown').trigger('click')
+    })
+    
+    // 좋아요, 싫어요 클릭시 플레이어창 안뜨게 하기(클릭이벤트 전파방지)
+    $('.pb_btn_up').click(function(event){
+        event.stopPropagation();
+    })
+    $('.pb_btn_down').click(function(event){
+        event.stopPropagation();
+    })
+    
+    // 사이드 메뉴 클릭시 플레이어창 넣기
+    $('.side_menu').click(function(){
+        btn = false
+        $('.player_updown').trigger('click')
+    })
 
     $('.player_updown').click(function(){
         if(btn == true){
@@ -437,35 +505,57 @@ $(document).ready(function(){
         }
         else if(btn == false){
             $(this).css({ transform: 'rotateZ(0deg)' })
-            $('.main_player').css({ height: '0' })
+            $('.main_player').css({ height: '0%' })
             $('body').css({ overflow: 'visible' })
             btn = true;
         }
     });
 
-    // 앞으로 넘어가기
+    // 이미지 클릭 후 플레이어창 띄우면 리스트 업데이트
+    function make_player_list(){
+        cate_chk = $('#v_player').attr('class').split('_')[0]
+        $('.music_list_item').remove()
 
+        if(cate_chk == 'kpop'){
+            list_chk = $('.kpop').length
+            music_list_item(list_chk, 2)
+        }
+        else if (cate_chk == 'jpop'){
+            list_chk = $('.jpop').length
+            music_list_item(list_chk, 3)
+        }
+        else if (cate_chk == 'pop'){
+            list_chk = $('.pop').length
+            music_list_item(list_chk, 4)
+        }
+        else if (cate_chk == 'arnew'){
+            list_chk = $('.arnew').length
+            music_list_item(list_chk, 5)
+        }
+    } 
+
+    // 앞으로 넘어가기
     $('.pb_next').click(function(){
         cate_chk = $('#v_player').attr('class').split('_')[0]
         if(cate_chk == 'kpop'){
-            linked = linked + 1
-            linked = linked % $(ITEM_LIST)[2].length
+            linked = (linked + 1) % $(ITEM_LIST)[2].length 
             streaming(2)
         }
         else if (cate_chk == 'jpop'){
-            linked = linked + 1
-            linked = linked % $(ITEM_LIST)[3].length
+            linked = (linked + 1) % $(ITEM_LIST)[3].length 
             streaming(3)
         }
         else if (cate_chk == 'pop'){
-            linked = linked + 1
-            linked = linked % $(ITEM_LIST)[4].length
+            linked = (linked + 1) % $(ITEM_LIST)[4].length 
             streaming(4)
+        }
+        else if (cate_chk == 'arnew'){
+            linked = (linked + 1) % $(ITEM_LIST)[5].length 
+            streaming(5)
         }
     })
     
     // 뒤로 넘어가기
-
     $('.pb_prev').click(function(){
         cate_chk = $('#v_player').attr('class').split('_')[0]
         if(cate_chk == 'kpop'){
@@ -483,31 +573,54 @@ $(document).ready(function(){
             linked = linked - 1
             streaming(4)
         }
-    })
+        else if (cate_chk == 'arnew'){
+            if(linked == 0){ linked = $(ITEM_LIST)[5].length }
+            linked = linked - 1
+            streaming(5)
+        }
+    });
 
 ////////////////   무한스크롤 관련   //////////////////
 
     let d_height = $(document).height();
     let w_height = $(window).height();
     let add_length = 0;
+    let scroll_ok = true;
 
     $(window).scroll(function(){
         let s_bot = $(window).scrollTop() + w_height
         console.log(d_height, w_height, s_bot)
         add_length = 1
 
-        if(d_height <= (s_bot + 1)) {
+        if(d_height <= (s_bot + 1) && scroll_ok == true) {
             load_scroll_noicon(ADD_LIST[0].length)
             for(let i=0; i<3; i++) {
                 load_scroll_item(ADD_LIST[add_length].length, add_length)
                 add_length += 1
             }
             d_height = $(document).height();
-            ttt()
+            swiper_event()
         }
     })
 
-////////////////   main_player   //////////////////
+///////////////////   보관함 재생목록 클릭 이벤트  /////////////////////
+
+$(document).on('click','.st_music_img',function(){
+    $('html, body').scrollTop(0);
+    scroll_ok = false;
+    $('.main').empty()
+    d_height = $(document).height();
+
+    // 왼쪽 화면구성단
+    storage_contents_box($(this).index())
+
+    // 오른쪽 화면구성단
+    storage_contents_item(ITEM_LIST[2].length, 2)
+
+});
+
+
+////////////////   플레이어 팝업창 클릭 이벤트   //////////////////
 
     $('.music_list_title').click(function(event){
         $('.music_list_title').css({
@@ -520,9 +633,10 @@ $(document).ready(function(){
         })
     })
     
-    // $('.music_list_item').click(function(event){
     $(document).on('click','.music_list_item', function(){
         $('.player_L').empty()
+        play_time()
+        music_play()    
         let tmp1 = $(this).find('.mli_title').text()
         let tmp2 = $(this).find('.mli_s_title').text()
         let tmp3 = $(this).find('.mli_img > img').attr('src')
@@ -532,56 +646,60 @@ $(document).ready(function(){
         cate_chk = $('#v_player').attr('class').split('_')[0]
 
         if(cate_chk == 'kpop'){
-            linked = $(this).index()
+            linked = $(this).index() - 1
             streaming(2)
-            play_time()
         }
         else if (cate_chk == 'jpop'){
-            linked = $(this).index()
+            linked = $(this).index() - 1
             streaming(3)
-            play_time()
         }
         else if (cate_chk == 'pop'){
-            linked = $(this).index()
+            linked = $(this).index() - 1
             streaming(4)
-            play_time()
         }
-    })
+        else if (cate_chk == 'arnew'){
+            linked = $(this).index() - 1
+            streaming(5)
+        }
+    }) // 제이쿼리 방식으로 안돼서 자바스크립트 방식으로 변경
 
     let mm_play = true;
-    $(document).on('click','.curr_picture > img', function(){
 
+    $(document).on('click','.curr_picture > img', function(){
         if(mm_play == true){
             $('.pb_pause').trigger('click')
             mm_play = false;
             $('.mm_play').css({
-                opacity: '0.5',
-                transform: 'scale(2)',
-                transition: 'all 1s'
-            }).animate({opacity:0},1000)
+                opacity: '1',
+            }).animate({opacity:0},500)
         }
 
         else if(mm_play == false){
             $('.pb_play').trigger('click')
             mm_play = true;
-        }
-    })
-    
-    ttt()
+            $('.mm_pause').css({
+                opacity: '1',
+            }).animate({opacity:0},500)
 
-///////////////////   main_around   /////////////////////
+        }
+    }) // 이하 동일, 플레이어 창에서의 클릭이벤트는 전부 자바스크립트 방식으로 변경해야할듯. 제이쿼리 방식이 안먹음
+    
+    swiper_event()
+
+///////////////////   사이드 3페이지 메뉴 클릭이벤트  /////////////////////
+
     $('#side_home').click(function(){
+        $('html, body').scrollTop(0);
+        scroll_ok = true;
         $('.main').empty()
         d_height = $(document).height();
     
         // 기본 재구성
-        load_main_nav()
-        load_main_nav_list(11)
         load_music_main(3)
         load_music_item_kpop($(ITEM_LIST)[2].length)
         load_music_item_jpop($(ITEM_LIST)[3].length)
         load_music_item_pop($(ITEM_LIST)[4].length)
-        ttt()
+        swiper_event()
 
         // 메인페이지 클릭 이벤트
         $('.kpop').click(function(){
@@ -632,15 +750,63 @@ $(document).ready(function(){
             music_player_title(tmpp1, tmpp2, tmpp3)
         })
     })
-    
     $('#side_around').click(function(){
+        $('html, body').scrollTop(0);
+        scroll_ok = false;
+        let count1 = 0;
+        let count2 = 4;
+        let count3 = 0;
+        let count11 = 0;
+        let count22 = 4;
+        let count33 = 0;
         $('.main').empty()
         around_main()
-        around_item_box($(AR_LIST)[0].length)
-        around_item_box_list($(AR_LIST)[1].length)
-        ttt()
+        around_item_box(AR_LIST[0].length)
+        around_item_box_list(AR_LIST[1].length)
+        around_famous_list(AR_LIST[2].length)
+        around_gen_list(AR_LIST[3].length)
+        for(let i=0; i<10; i++){
+            around_famous_item(count1, count2, count3)
+            count1 += 4
+            count2 += 4
+            count3 += 1
+        }
+        for(let i=0; i<10; i++){
+            around_gen_item(count11, count22, count33)
+            count11 += 4
+            count22 += 4
+            count33 += 1
+        }
+        around_vid_item(AR_LIST[4].length)
+        swiper_event()
     })
-
+    $('#side_storage').click(function(){
+        let count1 = 0;
+        let count2 = 4;
+        let count3 = 0;
+        let count11 = 0;
+        let count22 = 4;
+        let count33 = 0;
+        $('html, body').scrollTop(0);
+        $('.main').empty()
+        storage_main()
+        storage_item_box(ST_LIST[0].length)
+        storage_item_box_list(ST_LIST[1].length)
+        for(let i=0; i<5; i++){
+            storage_recent_list(count1,count2,count3)
+            count1 += 4
+            count2 += 4
+            count3 += 1
+        }
+        storage_art_box_list(ST_LIST[2].length)
+        for(let i=0; i<6; i++){
+            storage_art_list(count11,count22,count33)
+            count11 += 4
+            count22 += 4
+            count33 += 1
+        }
+        swiper_event()
+    })
 
 });
 
