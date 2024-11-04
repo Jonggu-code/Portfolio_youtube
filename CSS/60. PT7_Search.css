@@ -1,0 +1,89 @@
+/* input { height: 100%;}
+select { height: 100%;} */
+
+.container {
+    padding: 80px 0; 
+}
+
+.page_title {
+    text-align: center;
+    font-size: 18px;
+    font-weight: 900;
+}
+
+.search_box {
+    width: 100%;
+    border: 1px solid #ddd;
+    box-sizing: border-box;
+    margin-top: 30px; 
+}
+
+.search_option {
+    width: 500px;
+    margin: 80px auto;
+}
+.search_row {
+    width: 100%;
+    height: 30px;
+    line-height: 30px;
+    margin: 5px 0;
+    font-size: 12px !important; 
+}
+
+.item_name {
+    width: 120px;
+    height: 100%;
+    
+    float: left; 
+}
+.item_condition {
+    width: calc(100% - 120px);
+    height: 100%;
+    float: left; 
+}
+.sel_cate {
+    width: 100%;
+    height: 100%;
+    vertical-align: top;
+    /* float: left; */
+    font-size: 12px;
+}
+
+.sel_condition {
+    width: 120px;
+    height: 100%;
+    float: left;
+    
+    vertical-align: top;
+    font-size: 12px;
+}
+.txt_condition {
+    width: calc(100% - 120px - 5px);
+    float: right;
+    /* height: 100%;
+    box-sizing: border-box;
+    padding: 0 10px; */
+    margin-left: 5px;
+}
+
+/* 모든 input에 공통으로 적용할거 */
+.common_input {
+    height: 100%;
+    padding: 0 10px;
+    box-sizing: border-box;
+} 
+
+
+.sale_price {
+    width: 150px;
+} 
+
+
+.btn_area {
+    text-align: center;
+    margin-top: 30px;
+}
+.btn_submit{ 
+    font-size: 12px;
+    padding: 5px 20px;
+}

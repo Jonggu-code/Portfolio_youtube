@@ -28,6 +28,23 @@ ul {
     margin: 0;
 }
 
+::-webkit-scrollbar {
+    width: 12px;
+}
+::-webkit-scrollbar-track {
+    background: #616161;
+}
+::-webkit-scrollbar-thumb {
+    width: 8px;
+    background: #131313;
+    border-radius: 10px;
+    border: 1px solid #969696;
+    transition: width 0.3s;
+}
+::-webkit-scrollbar-thumb:hover {
+    background: #616161;
+    width: 12px;
+}
 /* 
 /////////////////////////////////////////////////////////////
 /////////////////////// 헤더 메뉴 ///////////////////////////
@@ -160,7 +177,10 @@ ul {
     padding: 0px 5px;
     background: #000;
     box-sizing: border-box;
-    overflow: scroll;
+    overflow-y: auto;
+    overflow-x: hidden;
+
+
     
     position: fixed;
     top: 80px;
@@ -1321,7 +1341,8 @@ ul {
     margin-top: 2px;
     width: 100%;
     height: calc(100% - 130px);
-    overflow: scroll;
+    overflow-y: scroll;
+    overflow-x: hidden;
 }
 
 /* /////////////////////////////////////////////// */
@@ -1477,7 +1498,8 @@ ul {
 .scbox_L {
     width: 60%;
     height: calc(100% - 140px);
-    overflow: scroll;
+    margin-top: 60px;
+    overflow-y: auto;
 }
 
 /* //////////////// 보관함 재생목록 오른쪽 화면단 ////////////////// */

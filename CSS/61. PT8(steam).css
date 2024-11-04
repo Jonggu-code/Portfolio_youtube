@@ -1,0 +1,348 @@
+/* 공용 */
+body { margin: 0; background: #1b4058; 
+    height: 3000px;}
+    ul {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+    }
+    a {
+        text-decoration: none;
+        color: inherit;
+    }
+    .contents_area {
+        width: 940px;
+        height: 100%;
+        margin: 0 auto;
+        position: relative;
+    
+        border: 1px solid orangered;
+        box-sizing: border-box;
+    }
+    .mr_0 {
+        margin-right: 0 !important;
+    }
+    
+    /* //////////////////////////// */
+    
+    /* header */
+    .header {
+        width: 100%;
+        height: 100px;
+    
+        /* 1번 방법 -하위메뉴 배치하는거  (저 아래 .h_outer_ul 위에 주석 써놓음) */
+        /* line-height: 100px; */
+        
+        background: #171d25;
+        color: #b7b7b7;
+    
+        /* 헤더 안에 있는 마우스 올리면 나타나는 하위 메뉴들이 본문의 position 들한테 먹히지 않게 헤더 자체의 z-index를 높여줬음 */
+        position: relative;
+        z-index: 9999999999;
+    }
+    
+    .logo {
+        display: block;
+        width: 170px;
+        height: 45px;
+        background: url(https://store.akamai.steamstatic.com/public/shared/images/header/logo_steam.svg?t=962016) no-repeat center / contain;
+    
+        text-indent: -9999px;
+        overflow: hidden;
+    
+        float: left;
+        margin-top: calc((100px - 45px) / 2);
+    }
+    
+    /* 자식메뉴 나타나게 하는 방법 2가지 있음 
+        1번방법. h_outer_ul 에 line-height: 100px 적용해서 알아서 가운데 정렬되게 하기. 
+          (대신 이렇게 하면 하위 메뉴(inner_ul)들도 다 100px 적용되기 때문에 별도로 line-height 값 2 정도 줘야함)
+          (그리고 하위 메뉴의 위치가 헤더 바깥쪽에 위치하게 되기 때문에 h_inner_ul의 위치를 position: absolute를 이용해서 STORE 글자 바로 아래 오도록 배치해야함)
+    
+        2번방법. h_outer_ul 자체에 높이를 별도로 주고 위에 margin-top 으로 세로 정렬 하기
+    */
+    .h_outer_ul {
+        float: left;
+        margin-left: 40px;
+        cursor: pointer;
+        
+        /* 2번 방법 - 폰트사이즈 12인경우 글씨 높이가 21px임 */
+        margin-top: calc((100px - 21px) / 2); 
+    
+        /* background-color: skyblue; */
+    }
+    .h_outer_li {
+        float: left;
+        padding: 0 10px;
+        font-size: 14px;
+    
+        /* 1번방법, 2번방법 */
+        position: relative;
+    
+        /* border: 1px solid; */
+    }
+    .h_outer_li:hover span {
+        color: #fff;
+    }
+    
+    .h_inner_ul {
+        display: none;
+        width: 100%;
+        font-size: 12px;
+        padding: 0 15px;
+        background-color: #171d25;
+        line-height: 20px;
+        padding: 15px 20px;
+    
+        /* 1번방법 */
+        /* position: absolute;
+        left: auto;
+        top: 65px;
+        line-height: 2; */
+        
+    
+        position: absolute;
+    }
+    
+    .h_outer_li:hover  .h_inner_ul {
+        display: block;
+        color: #fff;
+    }
+    
+    
+    .h_right_menu {
+        position: absolute;
+        top: 5px;
+        right: -80px;
+        height: 25px;
+        line-height: 25px;
+    
+    }
+    .h_right_install_btn {
+        padding: 3px 15px;
+        background-color: green;
+        border-radius: 3px;
+    }
+    .btn_login {
+        border-right: 1px solid #ddd;
+        margin: 0 10px;
+    }
+    .sel_lang {
+        height: 100%;
+        background: transparent;
+        color: #fff;
+        padding: 0 10px;
+    }
+    .sel_lang option {
+        background: #171d25;
+    }
+    
+    
+    /* 본문 */
+    .main {
+        /* background: #1b4058; */
+        padding: 30px 0;
+    
+        /* height: 1000px; */
+    }
+    
+    /* 본문 네비게이션 바 */
+    .nav {
+        height: 35px;
+        line-height: 35px;
+        background: #377097;
+        color: #f5f5f5;
+        font-size: 14px;
+    
+        margin-bottom: 30px;
+    }
+    .nav_ul {
+        height: 100%;
+        float: left; 
+    }
+    .nav_ul li {
+        float: left;
+        padding: 0 20px;
+        border-right: 1px solid #595959;
+        color: #bfbfbf;
+        font-size: 13px;
+    }
+    .nav_ul li:hover {
+        background: #ddd;
+        color: #545454;
+    }
+    
+    .search {
+        float: right;
+        height: 29px;
+        box-sizing: border-box;
+        margin: 3px;
+        border-radius: 3px;
+        border: 1px solid #121010;
+        padding: 0 5px;
+        background: #365e78;
+        outline: none;
+    }
+    
+    .search::placeholder {
+        color: #000;
+    }
+    
+    
+    /* FEATURED & RECOMMENDED */
+    .sec {
+        margin-bottom: 50px;
+    }
+    .sec_title {
+        color: #fff;
+        margin: 0;
+    }
+    .content_box {
+        /* min-height: 300px;
+        overflow: hidden; */
+    }
+    .featured_L {
+        width: 65%;
+        height: 353px;
+        float: left;
+        background-color: teal;
+    }
+    .featured_R {
+        width: 35%;
+        height: 353px;
+        float: left;
+        background-color: #365e78;
+    }
+    .paging_box {
+        text-align: center;
+        line-height: 35px;
+    }
+    .paging {
+        overflow: hidden;
+        display: inline-block;
+    }
+    .paging li {
+        width: 20px;
+        height: 10px;
+        background-color: #c0c0c0;
+        border-radius: 2px;
+        margin: 0px 3px;
+        float: left;
+    }
+    .paging li:hover {
+        background-color: #fff;
+        cursor: pointer;
+    }
+    
+    
+    /* SPECIAL OFFERSD */
+    .special_contents {
+        width: calc((100% - (10px * 2)) / 3);
+        height: 390px;
+        float: left;
+    }
+    .margin_20 {
+        margin: 0 10px;
+    }
+    .special_img {
+        width: 100%;
+        height: 75%;
+        background-color: slategray;
+    }
+    .special_desc {
+        width: 100%;
+        height: 25%;
+        background-color: #9f9f9f;
+    }
+    .special_box {
+        width: 100%;
+        height: calc((100% - 10px) / 2);
+        margin-bottom: 10px;
+    
+    }
+    
+    
+    /* BROWSE STEAM */
+    .browse_box {
+        font-size: 0;
+    }
+    .browse_item {
+        display: inline-block;
+        width: calc((100% - (10px* 3)) / 4);
+        height: 60px;
+        margin-right: 10px;
+    
+        line-height: 60px;
+        text-align: center;
+    
+        background-color: #1c5e81;
+        color: #66c0f4;
+    
+        border-radius: 5px;
+        font-weight: 900;
+        font-size: 18px;
+    
+        text-shadow: 0 0 1px #5c9bbf;
+        /* box-shadow: 0 0 5px 2px rgb(0 0 0 / 50%); */
+    
+        box-shadow: 0 0 5px 2px rgb(0,0,0,0.5);
+    }
+    .browse_item:hover {
+        cursor: pointer;
+        color: #fff;
+    }
+    
+    
+    
+    /* chart */
+    .chart  .content_box {
+        overflow: hidden;
+    }
+    .chart_L {
+        width: 618px;
+        float: left;
+        background-color: wheat;
+    }
+    .chart_L_row {
+        width: 100%;
+        height: 70px;
+        margin-bottom: 5px;
+    }
+    .chart_img {
+        width: 185px;
+        height: 100%;
+        background-color: skyblue;
+        float: left;
+    }
+    .chart_desc {
+        width: calc(100% - 185px);
+        height: 100%;
+        background-color: hotpink;
+        float: left;
+    }
+    .chart_desc:hover {
+        background-color: #6affeb;
+        cursor: pointer;
+    }
+    
+    
+    .chart_R {
+        width: 308px;
+        float: right;
+        background-color: #eb7b58;
+        padding: 0px 10px;
+        box-sizing: border-box;
+    }
+    .chart_R_desc {
+        height: 100px;
+        background-color: skyblue;
+        margin-bottom: 5px;
+    }
+    .chart_R_img {
+        height: 150px;
+        background-color: #960000;
+        margin-bottom: 5px;
+    }
+    
+    
+    /* UPDATES AND OFFERS */

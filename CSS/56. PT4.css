@@ -1,0 +1,226 @@
+body {margin: 0;}
+
+#wrap {
+    /* border: 1px solid; */
+    position: relative;
+}
+ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+a {
+    color: inherit;
+    text-decoration: none;
+}
+.header {
+    background-color: #fff;
+    width: 100%;
+    /* border: 1px solid; */
+    height: 100px;
+    box-sizing: border-box;
+    padding: 0 15px;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 2;
+}
+.header_top {
+    /* background-color: aqua; */
+    width: 100%;
+    height: 50px;
+    line-height: 50px;
+    float: left;
+    box-sizing: border-box;
+}
+.logo {
+    /* border: 1px solid; */
+    width: 250px;
+    height: 100%;
+    background: url(../img/afreecaTV_logo.svg) no-repeat left / 250px; 
+    float: left;
+    box-sizing: border-box;
+}
+.search {
+    border: 3px solid blue;
+    width: 300px;
+    height: 30px;
+    margin: 7px 0px 0px 30px;
+    font-size: 0;
+    border-radius: 6px;
+    overflow: hidden;
+    float: left;
+}
+.search_txt {
+    width: calc(100% - 30px);
+    height: 30px;
+    padding-left: 10px;
+    float: left;
+    border: none;
+    box-sizing: border-box;
+    outline: none;
+}
+.btn_reset {
+    width: 30px;
+    height: 30px;
+    border: none;
+    padding: 0;
+    float: left;
+    background: url(../img/theComma/btn_close.png) no-repeat center / 10px;
+    cursor: pointer;
+    opacity: 0;
+    box-sizing: border-box;
+}
+.search:hover .btn_reset {
+    opacity: 1;
+}
+.login {
+    /* border: 1px solid; */
+    /* width: 100px; */
+    float: right;
+    font-size: 17px;
+    font-weight: 900;
+    text-align: center;
+}
+.header_bot {
+    /* background-color: aquamarine; */
+    /* border: 1px solid; */
+    width: 100%;
+    height: 50px;
+    font-size: 16px;
+    font-weight: 900;
+    float: left;
+    box-sizing: border-box;
+}
+.menubar_L {
+    float: left;
+}
+.menubar_R {
+    float: right;
+}
+.menubox {
+    /* border: 1px solid; */
+    /* width: 100px; */
+    height: 100%;
+    line-height: 50px;
+    padding: 0 20px;
+    float: left;
+}
+.nopad_L {
+    padding-left: 0;
+}
+.nopad_R {
+    padding-right: 0;
+}
+.container {
+    /* width: 100%; */
+    /* height: 2000px; */
+}
+.aside {
+    /* background-color: salmon; */
+    width: 250px;
+    height: calc(100vh - 100px);
+    padding: 0 10px;
+    border: 1px solid rgb(192, 192, 192);
+    box-sizing: border-box;
+    /* menu값이 많아진다면 스크롤바가 없어진다.
+    overflow : auto를 주어야 메뉴가 많아도 스크롤바가 정상으로 생김. */
+    overflow: auto;
+    position: fixed;
+    top: 100px;
+    left: 0;
+}
+.aside_menu_top {
+    width: 100%;
+    border-bottom: 1px solid rgb(192, 192, 192);
+}
+.aside_menu_bot {
+    width: 100%;
+    /* border: 1px solid; */
+}
+.aside_menubox {
+    /* border: 1px solid; */
+    width: 100%;
+    padding: 20px 0;
+    text-align: center;
+    font-size: 16px;
+    font-weight: 900;
+}
+.main {
+    background-color: bisque;
+    width: calc(100% - 250px);
+    height: 100%;
+    margin-left: 250px;
+    margin-top: 100px;
+    /* position: absolute;
+    top: 100px;
+    left: 250px;
+    z-index: 1; */
+}
+.main_banner {
+    background-color: rgb(111, 160, 233);
+    width: 100%;
+    height: 100px;
+}
+.main_banner_item {
+    border: 1px solid;
+    box-sizing: border-box;
+    width: calc(100% / 3);
+    height: 100%;
+    float: left;
+}
+.main_sec {
+    /* border: 1px solid; */
+    width: 80%;
+    height: 100%;
+    margin: 50px auto;
+    overflow: hidden;
+    font-size: 0;
+}
+.main_img {
+    width: 100%;
+    height: 100%;
+}
+.main_box_top {
+    background-color: rgb(144, 65, 192);
+    width: 100%;
+    /* height: 500px; */
+    overflow: hidden;
+    padding: 30px 0;
+}
+.main_box_bot {
+    background-color: rgb(85, 139, 143);
+    width: 100%;
+    /* height: 700px; */
+    overflow: hidden;
+    padding: 30px 0;
+}
+.main_item {
+    /* border: 1px solid; */
+    width: calc((100% - 75px) / 6);
+    height: 220px;
+    float: left;
+    margin-right: 15px;
+    margin-bottom: 15px;
+    box-sizing: border-box;
+    border-radius: 5px;
+    overflow: hidden;
+}
+.nomr {
+    margin-right: 0;
+}
+.main_item_top {
+    width: 100%;
+    height: 70%;
+    background-color: lightgray;
+}
+.main_item_bot {
+    width: 100%;
+    height: 30%;
+    background-color: #fff;
+}
+.footer {
+    width: 100%;
+    height: 100px;
+    border-top: 1px solid rgb(192, 192, 192);;
+}

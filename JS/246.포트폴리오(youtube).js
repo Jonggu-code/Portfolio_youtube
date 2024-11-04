@@ -610,12 +610,13 @@ $(document).on('click','.st_music_img',function(){
     scroll_ok = false;
     $('.main').empty()
     d_height = $(document).height();
+    let curr_idx = $(this).attr('id').split('_')[2]
 
     // 왼쪽 화면구성단
-    storage_contents_box($(this).index())
+    storage_contents_box(curr_idx)
 
     // 오른쪽 화면구성단
-    storage_contents_item(ITEM_LIST[2].length, 2)
+    storage_contents_item(ITEM_LIST[+curr_idx+2].length, +curr_idx+2)
 
 });
 

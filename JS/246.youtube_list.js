@@ -753,9 +753,9 @@ function storage_item_box(count){
 function storage_item_box_list(count){
     for(let i=0; i<count; i++){
         let tmp = `
-                <div class="st_music_page swiper-slide" id="${ST_LIST[1][i].id}">
+                <div class="st_music_page swiper-slide">
                 <div class="st_music_pbox">
-                    <div class="st_music_img">
+                    <div class="st_music_img" id="${ST_LIST[1][i].id}">
                         <img src="./img/youtube_music/storage/${ST_LIST[1][i].src}.jpg" alt="">
                     </div>
                     <div class="st_music_big_title">${ST_LIST[1][i].b_title}</div>
