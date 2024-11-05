@@ -1,7 +1,26 @@
 $(document).ready(function(){
 
-    ////////////  검색창 이벤트  //////////////////
+    $(document).on('mousedown','.hamber_btn',function(event){
+        $(this).addClass('hamber_active')
+    })
+    $(document).on('mouseup','.hamber_btn',function(){
+        setTimeout(() => {
+            $(this).removeClass('hamber_active')
+        },10);
+    })
 
+    // 햄버거버튼 클릭
+    $(document).on('click','.hamber_btn',function(){
+        $('.side_menu').children(':not(.side_nav)').toggleClass('side_menubar_etc');
+        $('.side_menu').toggleClass('side_menu_act');
+        $('.side_nav').toggleClass('side_nopad');
+        $('.side_icon').toggleClass('side_nomar');
+        $('.side_icon_f').toggleClass('side_nomar');
+        $('.side_menubar').toggleClass('side_menubar_act');
+        $('.side_txt').toggleClass('side_txt_act')
+    });
+
+    // 검색창 클릭
     $('#find_input').focus(function(){
         $('.search_box').css({
             background: '#090909'
@@ -11,7 +30,6 @@ $(document).ready(function(){
             background: 'rgba(255,255,255,0.2)'
         })
     })
-
     $('#find_input').on("input", function(){
         if($(this).val().length > 0){
             $('.search_null').show();
@@ -72,12 +90,8 @@ $(document).ready(function(){
 ////////////////   볼륨바 클릭 위치 계산함수    //////////////////
 
     function volume_pos(){
-        $('.volume_bar_active').css({
-            width: `${clickPercentage * 100}%`
-        })
-        $('.volume_circle').css({
-            left: `${clickPercentage * 100}%`
-        })
+        $('.volume_bar_active').css({ width: `${clickPercentage * 100}%` })
+        $('.volume_circle').css({ left: `${clickPercentage * 100}%` })
     }
 
 ////////////////   볼륨 조절 관련 이벤트    //////////////////
@@ -116,17 +130,11 @@ $(document).ready(function(){
         }
     })
     $('.volume_bar_hover').mouseup(function(){ 
-        $('.volume_circle').css({
-            transform: 'translate(-50%,-50%) scale(1)'
-        })
+        $('.volume_circle').css({ transform: 'translate(-50%,-50%) scale(1)' })
         chk=false; 
     })
-    $('.pb_right_control').mouseenter(function(){ 
-        chk=false; 
-    })
-    $('.pb_right_control').mouseleave(function(){ 
-        chk=false; 
-    })
+    $('.pb_right_control').mouseenter(function(){ chk=false; })
+    $('.pb_right_control').mouseleave(function(){ chk=false; })
 
 ////////////////   음소거 관련 클릭이벤트    //////////////////
 
@@ -134,22 +142,14 @@ $(document).ready(function(){
         $('#v_player')[0].muted=true; // 음소거를 실행해라 라는 뜻 
 
         v_volume.css('left').split('px')[0] = 0 // 실제 볼륨 0으로 변경
-        $('.volume_bar_active').css({
-            width: `0%`
-        })
-        $('.volume_circle').css({
-            left: `0%`
-        })
+        $('.volume_bar_active').css({ width: `0%` })
+        $('.volume_circle').css({ left: `0%` })
     }) 
 
     muted_on.click(function(){
         $('#v_player')[0].muted=false; // 음소거를 취소해라
-        $('.volume_bar_active').css({
-            width: `${volume_value}`
-        })
-        $('.volume_circle').css({
-            left: `${volume_value}`
-        })
+        $('.volume_bar_active').css({ width: `${volume_value}` })
+        $('.volume_circle').css({ left: `${volume_value}` })
     })
 
 ////////////////   음소거 관련 클릭이벤트    //////////////////
@@ -181,12 +181,8 @@ $(document).ready(function(){
 
         $('.pb_play').trigger('click')
 
-        $('.bar_circle').css({
-            left: `${clickPercentage_main100}%`
-        })
-        $('.play_bar_active').css({
-            width: `${clickPercentage_main100}%`
-        })
+        $('.bar_circle').css({ left: `${clickPercentage_main100}%` })
+        $('.play_bar_active').css({ width: `${clickPercentage_main100}%` })
         bar_inc = clickPercentage_main100
     })
 
@@ -196,32 +192,20 @@ $(document).ready(function(){
 
     $('.loop').click(function(){
         if(loop == true){
-            $('#loop').css({
-                fill: '#fff'
-            })
+            $('#loop').css({ fill: '#fff' })
             loop = false
         }
         else if(loop == false){
-            $('.loop').css({
-                display: 'none'
-            })
-            $('.loop_one').css({
-                display: 'block'
-            })
+            $('.loop').css({ display: 'none' })
+            $('.loop_one').css({ display: 'block' })
             loop = true
         }
     })
 
     $('.loop_one').click(function(){
-        $('.loop_one').css({
-            display: 'none'
-        })
-        $('.loop').css({
-            display: 'block'
-        })
-        $('#loop').css({
-            fill: '#8b8b8b'
-        })
+        $('.loop_one').css({ display: 'none' })
+        $('.loop').css({ display: 'block' })
+        $('#loop').css({ fill: '#8b8b8b' })
     })
 
 ////////////////  랜덤재생 클릭이벤트  //////////////////
@@ -252,27 +236,15 @@ $(document).ready(function(){
 ////////////////  음소거 클릭이벤트  //////////////////
 
     $('.volume_icon').click(function(){
-        $('.volume_icon').css({
-            display: 'none'
-        })
-        $('.muted_icon').css({
-            display: 'block'
-        })
+        $('.volume_icon').css({ display: 'none' })
+        $('.muted_icon').css({ display: 'block' })
     })
 
     $('.muted_icon').click(function(){
-        $('.volume_icon').css({
-            display: 'block'
-        })
-        $('.muted_icon').css({
-            display: 'none'
-        })
-        $('.volume_bar_active').css({
-            width: `${volume_value * 100}%`
-        })
-        $('.volume_circle').css({
-            left: `${volume_value * 100}%`
-        })
+        $('.volume_icon').css({ display: 'block' })
+        $('.muted_icon').css({ display: 'none' })
+        $('.volume_bar_active').css({ width: `${volume_value * 100}%` })
+        $('.volume_circle').css({ left: `${volume_value * 100}%` })
     })
 
 ////////////////  좋아요, 싫어요 클릭  //////////////////
@@ -337,16 +309,11 @@ let thumbdn = true;
         clearInterval(play_interval)
         clearInterval(time_play)
 
-        $('.player_bar').css({
-            display: 'flex'
-        })
+        // 하단 플레이어 나오게하는 기능
+        $('.player_bar').css({ display: 'flex' })
 
-        time_play = setInterval(() => {
-            play_time()
-        }, 1000);
-        play_interval = setInterval(() => {
-            music_play()
-        }, 1000)
+        time_play = setInterval(() => { play_time() }, 1000);
+        play_interval = setInterval(() => { music_play() }, 1000)
 
         // 자동 재생 
 
@@ -617,8 +584,48 @@ $(document).on('click','.st_music_img',function(){
 
     // 오른쪽 화면구성단
     storage_contents_item(ITEM_LIST[+curr_idx+2].length, +curr_idx+2)
-
 });
+
+///////////////////   보관함 재생목록 리스트 클릭이벤트  /////////////////////
+
+$(document).on('click','.scbr_item', function(){
+    $('.player_L').empty()
+    $('.music_list_item').remove()
+    play_time()
+    music_play()    
+    let tmp1 = $(this).find('.scbr_title').text()
+    let tmp2 = $(this).find('.scbr_s_title').text()
+    let tmp3 = $(this).find('.scbr_img > img').attr('src')
+    cate_chk = $(this).attr('id').split("_")[0]
+
+    music_player_title(tmp1, tmp2, tmp3)
+
+    if(cate_chk == 'kpop'){
+        linked = $(this).index()
+        streaming(2)
+        list_chk = ITEM_LIST[2].length
+        music_list_item(list_chk, 2)
+    }
+    else if (cate_chk == 'jpop'){
+        linked = $(this).index()
+        streaming(3)
+        list_chk = ITEM_LIST[3].length
+        music_list_item(list_chk, 3)
+    }
+    else if (cate_chk == 'pop'){
+        linked = $(this).index()
+        streaming(4)
+        list_chk = ITEM_LIST[4].length
+        music_list_item(list_chk, 4)
+    }
+    else if (cate_chk == 'arnew'){
+        linked = $(this).index()
+        streaming(5)
+        list_chk = ITEM_LIST[5].length
+        music_list_item(list_chk, 5)
+    }
+});
+
 
 
 ////////////////   플레이어 팝업창 클릭 이벤트   //////////////////
@@ -684,7 +691,7 @@ $(document).on('click','.st_music_img',function(){
 
         }
     }) // 이하 동일, 플레이어 창에서의 클릭이벤트는 전부 자바스크립트 방식으로 변경해야할듯. 제이쿼리 방식이 안먹음
-    
+
     swiper_event()
 
 ///////////////////   사이드 3페이지 메뉴 클릭이벤트  /////////////////////

@@ -26,7 +26,8 @@ function swiper_event() {
             nextEl: ".swiper-button-next0",
             prevEl: ".swiper-button-prev0",
         },
-        effect: 'slide'
+        effect: 'slide',
+        speed: 700
     });
     swiper1 = new Swiper(".mySwiper1", {
         slidesPerView: 5,
@@ -40,6 +41,8 @@ function swiper_event() {
             nextEl: ".swiper-button-next1",
             prevEl: ".swiper-button-prev1",
         },
+        effect: 'slide',
+        speed: 700
     });
     swiper2 = new Swiper(".mySwiper2", {
         slidesPerView: 5,
@@ -53,7 +56,8 @@ function swiper_event() {
             nextEl: ".swiper-button-next2",
             prevEl: ".swiper-button-prev2",
         },
-        effect: 'slide'
+        effect: 'slide',
+        speed: 700
     });
     swiper3 = new Swiper(".mySwiper3", {
         slidesPerView: 5,
@@ -67,7 +71,8 @@ function swiper_event() {
             nextEl: ".swiper-button-next3",
             prevEl: ".swiper-button-prev3",
         },
-        effect: 'slide'
+        effect: 'slide',
+        speed: 700
     });
 
     swiper4 = new Swiper(".mySwiper4", {
@@ -82,7 +87,8 @@ function swiper_event() {
             nextEl: ".swiper-button-next4",
             prevEl: ".swiper-button-prev4",
         },
-        effect: 'slide'
+        effect: 'slide',
+        speed: 700
     });
     
     swiper5 = new Swiper(".mySwiper5", {
@@ -97,7 +103,8 @@ function swiper_event() {
             nextEl: ".swiper-button-next5",
             prevEl: ".swiper-button-prev5",
         },
-        effect: 'slide'
+        effect: 'slide',
+        speed: 700
     });
     swiper6 = new Swiper(".arSwiper0", {
         slidesPerView: 5,
@@ -111,7 +118,8 @@ function swiper_event() {
             nextEl: ".swiper-button-next0",
             prevEl: ".swiper-button-prev0",
         },
-        effect: 'slide'
+        effect: 'slide',
+        speed: 700
     });
     swiper7 = new Swiper(".arSwiper1", {
         slidesPerView: 3,
@@ -125,7 +133,8 @@ function swiper_event() {
             nextEl: ".swiper-button-next1",
             prevEl: ".swiper-button-prev1",
         },
-        effect: 'slide'
+        effect: 'slide',
+        speed: 700
     });
     swiper8 = new Swiper(".arSwiper2", {
         slidesPerView: 4,
@@ -139,7 +148,8 @@ function swiper_event() {
             nextEl: ".swiper-button-next2",
             prevEl: ".swiper-button-prev2",
         },
-        effect: 'slide'
+        effect: 'slide',
+        speed: 700
     });
     swiper9 = new Swiper(".arSwiper3", {
         slidesPerView: 3,
@@ -153,7 +163,8 @@ function swiper_event() {
             nextEl: ".swiper-button-next3",
             prevEl: ".swiper-button-prev3",
         },
-        effect: 'slide'
+        effect: 'slide',
+        speed: 700
     });
     swiper10 = new Swiper(".stSwiper0", {
         slidesPerView: 2,
@@ -173,9 +184,10 @@ function swiper_event() {
             nextEl: ".swiper-button-next3",
             prevEl: ".swiper-button-prev3",
         },
-        effect: 'slide'
+        effect: 'slide',
+        speed: 700
     });
-    swiper10 = new Swiper(".stSwiper1", {
+    swiper11 = new Swiper(".stSwiper1", {
         slidesPerView: 2,
         slidesPerGroup: 2,
         breakpoints: {
@@ -193,7 +205,8 @@ function swiper_event() {
             nextEl: ".swiper-button-next3",
             prevEl: ".swiper-button-prev3",
         },
-        effect: 'slide'
+        effect: 'slide',
+        speed: 700
     });
 }
 

@@ -821,7 +821,7 @@ function storage_art_list(count1, count2, count3){
 function storage_contents_box(count){
     let tmp = `
         <div class="scbox_main">
-            <div class="scbox_R">
+            <div class="scbox_L">
                 <img src="./img/youtube_music/storage/${ST_LIST[1][count].src}.jpg" alt="">
                 <div class="scbox_title">${ST_LIST[1][count].b_title}</div>
                 <div class="scbox_sub">${ST_LIST[1][count].m_title}</div>
@@ -830,7 +830,7 @@ function storage_contents_box(count){
                     <svg viewBox="0 0 24 24" preserveAspectRatio="xMidYMid meet" focusable="false" class="style-scope yt-icon" style="pointer-events: none; display: block;"><g class="style-scope yt-icon"><path fill="#000" d="M6,4l12,8L6,20V4z" class="style-scope yt-icon"></path></g></svg>
                 </div>
             </div>
-            <div class="scbox_L"></div>
+            <div class="scbox_R"></div>
         </div>
     `
     $('.main').append(tmp)
@@ -842,22 +842,22 @@ function storage_contents_item(count, tmp1){
             time = '0'+ time
         }
         let tmp = `
-        <li class="music_list_item">
-            <div class="mli_img">
-                <div class="mli_play">
+        <div class="scbr_item" id="${ITEM_LIST[tmp1][i].id}">
+            <div class="scbr_img">
+                <div class="scbr_play">
                     <svg viewBox="0 0 24 24" preserveAspectRatio="xMidYMid meet" fill="#fff" focusable="false" class="style-scope yt-icon" style="pointer-events: none; display: block; width: 100%; height: 100%;"><g class="style-scope yt-icon"><path d="M6,4l12,8L6,20V4z" class="style-scope yt-icon"></path></g></svg>
                 </div>
                 <img src="./img/youtube_music/${ITEM_LIST[tmp1][i].src}.jpg" alt="">
             </div>
-            <div class="mli_txt">
-                <div class="mli_title">${ITEM_LIST[tmp1][i].b_title}</div>
-                <div class="mli_s_title">${ITEM_LIST[tmp1][i].m_title}</div>
+            <div class="scbr_txt">
+                <div class="scbr_title">${ITEM_LIST[tmp1][i].b_title}</div>
+                <div class="scbr_s_title">${ITEM_LIST[tmp1][i].m_title}</div>
             </div>
-            <div class="mli_time">
+            <div class="scbr_time">
             ${Math.floor(ITEM_LIST[tmp1][i].duration / 60)}:${time}</div>
-        </li>
+        </div>
     `
-    $('.scbox_L').append(tmp)
+    $('.scbox_R').append(tmp)
     }
 }
 
