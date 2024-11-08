@@ -1,4 +1,13 @@
 $(document).ready(function(){
+    // 햄버거버튼 클릭
+    $(document).on('mousedown','.music_list_title',function(event){
+        $(this).addClass('music_list_title_active')
+    })
+    $(document).on('mouseup','.music_list_title',function(){
+        setTimeout(() => {
+            $(this).removeClass('music_list_title_active')
+        },10);
+    })
 
     $(document).on('mousedown','.hamber_btn',function(event){
         $(this).addClass('hamber_active')
@@ -9,7 +18,6 @@ $(document).ready(function(){
         },10);
     })
 
-    // 햄버거버튼 클릭
     $(document).on('click','.hamber_btn',function(){
         $('.side_menu').children(':not(.side_nav)').toggleClass('side_menubar_etc');
         $('.side_menu').toggleClass('side_menu_act');
@@ -81,7 +89,7 @@ $(document).ready(function(){
         clickPercentage = (clickX / barWidth)
     }
 
-    let volume_value;
+    let volume_value = 1;
     let v_volume = $('.volume_bar_hover');
     let muted = $('.volume_icon');
     let muted_on = $('.muted_icon')
@@ -248,31 +256,17 @@ $(document).ready(function(){
     })
 
 ////////////////  좋아요, 싫어요 클릭  //////////////////
-let thumbup = true;
-let thumbdn = true;
-    $('.pb_btn_up').click(function(){
-        if(thumbup == true){
-            $('.thumbUp_b').hide()
-            $('.thumbUp_f').show()
-            thumbup = false;
-        }
-        else if(thumbup == false){
-            $('.thumbUp_f').hide()
-            $('.thumbUp_b').show()
-            thumbup = true;
-        }
+    $('.pb_btn_up').click(function(event){
+        $(this).children('svg').toggleClass('scbr_icon_act')
+        $(this).parents('.pb_btn_box').find('.thumbDn_f').removeClass('scbr_icon_act')
+        $(this).parents('.pb_btn_box').find('.thumbDn_b').addClass('scbr_icon_act')
+        event.stopPropagation();
     })
-    $('.pb_btn_down').click(function(){
-        if(thumbdn == true){
-            $('.thumbDn_b').hide()
-            $('.thumbDn_f').show()
-            thumbdn = false;
-        }
-        else if(thumbdn == false){
-            $('.thumbDn_f').hide()
-            $('.thumbDn_b').show()
-            thumbdn = true;
-        }
+    $('.pb_btn_down').click(function(event){
+        $(this).children('svg').toggleClass('scbr_icon_act')
+        $(this).parents('.pb_btn_box').find('.thumbUp_f').removeClass('scbr_icon_act')
+        $(this).parents('.pb_btn_box').find('.thumbUp_b').addClass('scbr_icon_act')
+        event.stopPropagation();
     })
 
 ////////////////   음악재생 이벤트    //////////////////
@@ -284,17 +278,21 @@ let thumbdn = true;
     function streaming(cate) {
         $('.pb_play').css({ display: 'none' })
         $('.pb_pause').css({ display: 'block' })
-        mm_play = true
+        mm_play = true;
+        ly_box = true;
         let img_link = `<img src="./img/youtube_music/${ITEM_LIST[cate][linked].src}.jpg" alt=""></img>`
         let music_box = `<video src="./media/${ITEM_LIST[cate][linked].src}.mp4" class="${ITEM_LIST[cate][linked].id}" id="v_player"></video>`
+        let music_ly = `<div class="music_ly">${ITEM_LIST[cate][linked].ly}</div>`
 
-        $('.music_player > video').remove()
+        $('.music_player').empty()
         $('.music_player').append(music_box)
+        $('.music_player').append(music_ly)
         $('.pb_thumbnail > img').remove()
         $('.pb_thumbnail').append(img_link)
         $('.pb_title_b').html(`${ITEM_LIST[cate][linked].b_title}`)
         $('.pb_title_m').html(`${ITEM_LIST[cate][linked].m_title}`)
         $('#v_player')[0].play()
+        $('#v_player')[0].volume = volume_value;
         
         movie_leng = $(ITEM_LIST)[cate][linked].duration
         mm_time = Math.floor(movie_leng / 60)
@@ -319,7 +317,6 @@ let thumbdn = true;
 
         $('#v_player').on('ended', function() {
             $('.pb_next').trigger('click')
-            $('#v_player')[0].volume = volume_value;
             let tmp1 = $('.pb_title_b').text()
             let tmp2 = $('.pb_title_m').text()
             let tmp3 = $('.pb_thumbnail > img').attr('src')
@@ -444,14 +441,14 @@ let time = document.getElementsByClassName('pb_play_time')[0]
     let cate_chk;
     let list_chk;
 
-    // 하단 플레이바 클릭시 플레이어 창 띄우기
-    $('.pb_center').click(function(){
+// 하단 플레이바 클릭시 플레이어 창 띄우기
+    $(document).on('click','.pb_center',function(){
         $('.player_updown').trigger('click')
     })
     
     // 좋아요, 싫어요 클릭시 플레이어창 안뜨게 하기(클릭이벤트 전파방지)
     $('.pb_btn_up').click(function(event){
-        event.stopPropagation();
+        event.stopPropagation(); // 이벤트 전파 방지
     })
     $('.pb_btn_down').click(function(event){
         event.stopPropagation();
@@ -466,13 +463,13 @@ let time = document.getElementsByClassName('pb_play_time')[0]
     $('.player_updown').click(function(){
         if(btn == true){
             $(this).css({ transform: 'rotateZ(180deg)' })
-            $('.main_player').css({ height: '91.5%' })
+            $('.main_player').css({ top: '80px' })
             $('body').css({ overflow: 'hidden' })
             btn = false;
         }
         else if(btn == false){
             $(this).css({ transform: 'rotateZ(0deg)' })
-            $('.main_player').css({ height: '0%' })
+            $('.main_player').css({ top: '100%' })
             $('body').css({ overflow: 'visible' })
             btn = true;
         }
@@ -481,6 +478,8 @@ let time = document.getElementsByClassName('pb_play_time')[0]
     // 이미지 클릭 후 플레이어창 띄우면 리스트 업데이트
     function make_player_list(){
         cate_chk = $('#v_player').attr('class').split('_')[0]
+        $('.music_list_main').empty()
+        music_player_add()
         $('.music_list_item').remove()
 
         if(cate_chk == 'kpop'){
@@ -559,7 +558,7 @@ let time = document.getElementsByClassName('pb_play_time')[0]
         console.log(d_height, w_height, s_bot)
         add_length = 1
 
-        if(d_height <= (s_bot + 1) && scroll_ok == true) {
+        if(d_height <= (s_bot + 200) && scroll_ok == true) {
             load_scroll_noicon(ADD_LIST[0].length)
             for(let i=0; i<3; i++) {
                 load_scroll_item(ADD_LIST[add_length].length, add_length)
@@ -626,7 +625,89 @@ $(document).on('click','.scbr_item', function(){
     }
 });
 
+////////////////   보관함 음악리스트 호버 이벤트   //////////////////
+let hover_lock = false;
+$(document).on('mouseenter', '.scbr_item', function(){
+    if(hover_lock) return; // 기능 잠그기
+    $(this).find('.scbr_txt').css({width: '40%'})
+    $(this).find('.scbr_time').css({display: 'none'})
+    $(this).find('.scbr_icon_box').css({display: 'flex'})
+});
+$(document).on('mouseleave', '.scbr_item', function(){
+    if(hover_lock) return; // 기능 잠그기
+    $(this).find('.scbr_icon_box').css({display: 'none'})
+    $('.scbr_txt').css({width: '82%'})
+    $('.scbr_time').css({display: 'block'})
+});
 
+////////////////   보관함 음악리스트 아이콘클릭  //////////////////
+
+$(document).on('click', '#scbr_icon_like', function(event){
+    $(this).children('svg').toggleClass('scbr_icon_act')
+    $(this).parents('.scbr_icon_box').find('.scbr_hate_f').removeClass('scbr_icon_act')
+    $(this).parents('.scbr_icon_box').find('.scbr_hate_b').addClass('scbr_icon_act')
+    event.stopPropagation();
+});
+
+$(document).on('click', '#scbr_icon_hate', function(event){
+    $(this).children('svg').toggleClass('scbr_icon_act')
+    $(this).parents('.scbr_icon_box').find('.scbr_like_f').removeClass('scbr_icon_act')
+    $(this).parents('.scbr_icon_box').find('.scbr_like_b').addClass('scbr_icon_act')
+    event.stopPropagation();
+});
+
+////////////////   보관함 체크박스 아이콘클릭  //////////////////
+
+$(document).on('click', '.scbr_icon_rec', function(event){
+    // item 호버 잠금
+    hover_lock = true;
+
+    // 체크박스를 제외한 요소 컨트롤
+    $('.scbr_time').addClass('perpect_none')
+    $('.scbr_icon_cir').addClass('perpect_none')
+    $('.scbr_icon_box').addClass('perpect_flex')
+    $('.scbr_icon_rec').addClass('perpect_flex')
+    $('.scbr_txt').css({width: '40%'})
+
+    // 체크박스 관련 토글클래스
+    $(this).children('svg').toggleClass('scbr_icon_act')
+    $(this).children('svg:nth-child(2)').toggleClass('chked')
+    $(this).parents('.scbr_item').toggleClass('scbr_item_act')
+    $('.scbr_control_box').css({bottom: '13%'})
+    $('.scbr_cb_leng').text( `${$('.chked').length}개 선택`)
+
+    event.stopPropagation();
+});
+
+////////////////   보관함 음악리스트 컨트롤박스  //////////////////
+
+$(document).on('click','#control_reset',function(){
+    hover_lock = false;
+
+    // 체크박스를 제외한 요소 리셋
+    $('.scbr_time').removeClass('perpect_none')
+    $('.scbr_icon_cir').removeClass('perpect_none')
+    $('.scbr_icon_box').removeClass('perpect_flex')
+    $('.scbr_icon_rec').removeClass('perpect_flex')
+    $('.scbr_txt').css({width: '82%'})
+
+    // 체크박스 요소 리셋
+    $('.scbr_icon_box').css({display: 'none'})
+    $('.scbr_txt').css({width: '82%'})
+    $('.scbr_time').css({display: 'block'})
+    $('.scbr_icon_rec').children('svg').addClass('scbr_icon_act')
+    $('.scbr_icon_rec').children('svg:nth-child(2)').removeClass('scbr_icon_act')
+    $('.scbr_icon_rec').children('svg:nth-child(2)').removeClass('chked')
+    $('.scbr_item').removeClass('scbr_item_act')
+    $('.scbr_control_box').css({bottom: '-100px'})
+    event.stopPropagation();
+});
+
+////////////////   보관함 재생버튼 클릭 이벤트   //////////////////
+
+$(document).on('click','.scbox_func',function(){
+    $('.scbr_item:first').trigger('click')
+});
 
 ////////////////   플레이어 팝업창 클릭 이벤트   //////////////////
 
@@ -640,6 +721,8 @@ $(document).on('click','.scbr_item', function(){
             color: '#fff'
         })
     })
+
+    
     
     $(document).on('click','.music_list_item', function(){
         $('.player_L').empty()
@@ -673,11 +756,11 @@ $(document).on('click','.scbr_item', function(){
 
     let mm_play = true;
 
-    $(document).on('click','.curr_picture > img', function(){
+    $(document).on('click','.curr_picture', function(){
         if(mm_play == true){
             $('.pb_pause').trigger('click')
             mm_play = false;
-            $('.mm_play').css({
+            $('.mm_pause').css({
                 opacity: '1',
             }).animate({opacity:0},500)
         }
@@ -685,12 +768,31 @@ $(document).on('click','.scbr_item', function(){
         else if(mm_play == false){
             $('.pb_play').trigger('click')
             mm_play = true;
-            $('.mm_pause').css({
+            $('.mm_play').css({
                 opacity: '1',
             }).animate({opacity:0},500)
 
         }
     }) // 이하 동일, 플레이어 창에서의 클릭이벤트는 전부 자바스크립트 방식으로 변경해야할듯. 제이쿼리 방식이 안먹음
+
+    $(document).on('mousedown','.music_list_title',function(){
+        $(this).toggleClass('')
+    });
+////////////////   플레이어 전체트랙 클릭이벤트   //////////////////
+    $(document).on('click','.mlt_track',function(){
+        make_player_list()
+    });
+////////////////   플레이어 가사 클릭이벤트   //////////////////
+    $(document).on('click','.mlt_ly',function(){
+        $('.music_list_main').empty()
+        let lyrics = $('#v_player').attr('class').split('_')[1]
+        let genre = $('#v_player').attr('class').split('_')[0]
+        if(genre == 'kpop'){ music_list_lyrics(0,lyrics) }
+        else if(genre == 'jpop'){ music_list_lyrics(1,lyrics) }
+        else if(genre == 'pop'){ music_list_lyrics(2,lyrics) }
+        else if(genre == 'arnew'){ music_list_lyrics(3,lyrics) }
+    });
+
 
     swiper_event()
 
@@ -815,6 +917,8 @@ $(document).on('click','.scbr_item', function(){
         }
         swiper_event()
     })
+    
+    $('#side_home').trigger('click')
 
 });
 

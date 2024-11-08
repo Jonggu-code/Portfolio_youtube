@@ -17,8 +17,8 @@ const ITEM_LIST = [
     ],
     // 뮤직차트 리스트 음악목록 (k-pop)
     [
-        {id: 'kpop_0', src: '꽃불', duration: '225', b_title: '꽃불', m_title: '심규선 (Lucia)' },
-        {id: 'kpop_1', src: '마음대로', duration: '206', b_title: '마음대로', m_title: '콜드' },
+        {id: 'kpop_0', src: '꽃불', duration: '225', b_title: '꽃불', m_title: '심규선 (Lucia)'},
+        {id: 'kpop_1', src: '마음대로', duration: '206', b_title: '마음대로', m_title: '콜드',},
         {id: 'kpop_2', src: '해바라기도가끔목이아프죠', duration: '286', b_title: '해바라기도 가끔 목이 아프죠', m_title: 'M.C The Max' },
         {id: 'kpop_3', src: 'andjuly', duration: '227', b_title: 'And July', m_title: '헤이즈 (Heize)' },
         {id: 'kpop_4', src: 'blueming', duration: '218', b_title: 'Blueming', m_title: 'IU (아이유)' },
@@ -27,7 +27,7 @@ const ITEM_LIST = [
         {id: 'kpop_7', src: 'fiesta', duration: '218', b_title: 'FIESTA', m_title: 'IZ*ONE (아이즈원)' },
         {id: 'kpop_8', src: 'happening', duration: '225', b_title: 'HAPPENING', m_title: 'AKMU (악동뮤지션)' },
         {id: 'kpop_9', src: 'jenga', duration: '211', b_title: 'JENGA', m_title: '헤이즈 (Heize)' },
-        {id: 'kpop_10', src: 'never', duration: '197', b_title: 'NEVER', m_title: '국민의 아들<br>(PRODUCE 101)' },
+        {id: 'kpop_10', src: 'never', duration: '197', b_title: 'NEVER', m_title: '국민의 아들 (PRODUCE 101)' },
         {id: 'kpop_11', src: 'notshy', duration: '180', b_title: 'NotShy', m_title: 'ITZY (잇지)' },
         {id: 'kpop_12', src: 'panorama', duration: '224', b_title: 'Panorama', m_title: 'IZ*ONE (아이즈원)' }
     ],
@@ -278,12 +278,12 @@ const ST_LIST = [
     ],
     // 종구님의 아티스트
     [
-        {id: 'st_art0', src: 'startist0', b_title: 'Kenshi Yonezu<br>(요네즈 켄시 / 米津 玄師)', m_title: '아티스트 • 구독자 738만명', main_txt: ''},
-        {id: 'st_art1', src: 'startist1', b_title: 'Hoshino Gen<br>(호시노 겐)', m_title: '아티스트 • 구독자 159만명' },
-        {id: 'st_art2', src: 'startist2', b_title: 'Hisaishi Joe<br>(히사이시 조)', m_title: '아티스트 • 구독자 122만명' },
-        {id: 'st_art3', src: 'startist3', b_title: '다즈비<br>(DAZBEE)', m_title: '아티스트 • 구독자 136만명' },
-        {id: 'st_art4', src: 'startist4', b_title: 'ZUTOMAYO', m_title: '아티스트 • 구독자 264만명' },
-        {id: 'st_art5', src: 'startist5', b_title: '심규선<br>(Lucia)', m_title: '아티스트 • 구독자 8.91만명' },
+        {id: 'st_art0', src: 'startist0', b_title: 'Kenshi Yonezu<br>(요네즈 켄시 / 米津 玄師)', m_title: '아티스트 • 구독자 738만명', url: 'https://www.youtube.com/channel/UCUCeZaZeJbEYAAzvMgrKOPQ'},
+        {id: 'st_art1', src: 'startist1', b_title: 'Hoshino Gen<br>(호시노 겐)', m_title: '아티스트 • 구독자 159만명', url: 'https://www.youtube.com/channel/UCPKlrgZXnnb89nSeITvTdGA' },
+        {id: 'st_art2', src: 'startist2', b_title: 'Hisaishi Joe<br>(히사이시 조)', m_title: '아티스트 • 구독자 122만명', url:'https://www.youtube.com/channel/UCxyzciBLt1Hyw06dlqwAIkw' },
+        {id: 'st_art3', src: 'startist3', b_title: '다즈비<br>(DAZBEE)', m_title: '아티스트 • 구독자 136만명', url:'https://www.youtube.com/@Dazbeeee' },
+        {id: 'st_art4', src: 'startist4', b_title: 'ZUTOMAYO', m_title: '아티스트 • 구독자 264만명', url:'https://www.youtube.com/channel/UCcd-GOvl9DdyPVHQxy58bOw' },
+        {id: 'st_art5', src: 'startist5', b_title: '심규선<br>(Lucia)', m_title: '아티스트 • 구독자 8.91만명', url:'https://www.youtube.com/channel/UC4VMmTByZwTAaU3En8HQE6A' },
     ],
 ]
 const ST_LIST_ITEM = [
@@ -338,6 +338,7 @@ const ST_LIST_ITEM = [
         {src: 'sart23', title: '부디', sub: '심규선'}
     ]
 ]
+
 ////////////////   왼쪽 사이드 메뉴바 관련   //////////////////
 function load_items(count){
     for(let i=0; i<count; i++){
@@ -426,7 +427,6 @@ function load_scroll(count){
         $('.main').append(tmp)
     }
 }
-
 function load_scroll_noicon(count){
     for(let i=0; i<count; i++){
         let tmp = `<div class="main_page_box contents_area" id="${ADD_LIST[0][i].id}">
@@ -448,7 +448,6 @@ function load_scroll_noicon(count){
         $('.main').append(tmp)
     }
 }
-
 function load_scroll_item(count, el){
     for(let i=0; i<count; i++){
         let tmp = `
@@ -573,7 +572,25 @@ function music_player_title(txt1, txt2, txt3){
             `
     $('.player_L').append(tmp)
 }
-
+function music_player_add(){
+    let tmp = `
+        <li class="music_list_add">
+            <div class="mla_L">
+                <div class="mla_title">현재 트랙 출처</div>
+                <div class="mla_s_title">K-POP 뮤직 스테이션</div>
+            </div>
+            <div class="mla_R">
+                <div class="mla_R_box">
+                    <div class="mla_icon">
+                        <svg viewBox="0 0 24 24" preserveAspectRatio="xMidYMid meet" focusable="false" class="style-scope yt-icon" style="pointer-events: none; display: block; width: 100%; height: 100%;"><g class="style-scope yt-icon"><path d="M22,13h-4v4h-2v-4h-4v-2h4V7h2v4h4V13z M14,7H2v1h12V7z M2,12h8v-1H2V12z M2,16h8v-1H2V16z" class="style-scope yt-icon"></path></g></svg>
+                    </div>
+                    <div class="mla_txt">저장</div>
+                </div>
+            </div>
+        </li>
+    `
+    $('.music_list_main').append(tmp)
+}
 function music_list_item(count, tmp1){
     for(let i=0; i<count; i++){
         let time = Math.floor(ITEM_LIST[tmp1][i].duration % 60)
@@ -609,7 +626,6 @@ function around_main(){
     `
     $('.main').append(tmp)
 }
-
 function around_item_box(count){
     for(let i=0; i<count; i++){
         let tmp = `<div class="main_page_box" id="${AR_LIST[0][i].id}">
@@ -630,7 +646,6 @@ function around_item_box(count){
     $('.main_around').append(tmp)
     }
 }
-
 function around_item_box_list(count){
     for(let i=0; i<count; i++){
         let tmp = `
@@ -654,7 +669,6 @@ function around_item_box_list(count){
     $(`#ar_new .mp_music_box`).append(tmp)
     }
 }
-
 function around_famous_list(count){
     for(let i=0; i<(count/4); i++){
         let tmp = `
@@ -664,7 +678,6 @@ function around_famous_list(count){
         $(`#ar_famous .mp_music_box`).append(tmp)
     }
 }
-
 function around_famous_item(count1, count2, count3){
     for(let i=count1; i<count2; i++){
         let tmp = `
@@ -687,7 +700,6 @@ function around_famous_item(count1, count2, count3){
         $(`#fam_box_${count3}`).append(tmp)
     }
 }
-
 function around_gen_list(count){
     for(let i=0; i<(count/4); i++){
         let tmp = `
@@ -697,7 +709,6 @@ function around_gen_list(count){
         $(`#ar_gen .mp_music_box`).append(tmp)
     }
 }
-
 function around_gen_item(count1, count2, count3){
     for(let i=count1; i<count2; i++){
         let tmp = `
@@ -709,7 +720,6 @@ function around_gen_item(count1, count2, count3){
         $(`#gen_box_${count3}`).append(tmp)
     }
 }
-
 function around_vid_item(count){
     for(let i=0; i<count; i++){
         let tmp = `
@@ -791,6 +801,7 @@ function storage_art_box_list(count){
                 <div class="st_music_pbox">
                     <div class="st_art_img">
                         <img src="./img/youtube_music/storage/${ST_LIST[2][i].src}.jpg" alt="">
+                        <a href="${ST_LIST[2][i].url}" target="_blank"></a>
                     </div>
                     <div class="st_art_big_title">${ST_LIST[2][i].b_title}</div>
                     <div class="st_art_mini_title">${ST_LIST[2][i].m_title}</div>
@@ -853,8 +864,24 @@ function storage_contents_item(count, tmp1){
                 <div class="scbr_title">${ITEM_LIST[tmp1][i].b_title}</div>
                 <div class="scbr_s_title">${ITEM_LIST[tmp1][i].m_title}</div>
             </div>
-            <div class="scbr_time">
-            ${Math.floor(ITEM_LIST[tmp1][i].duration / 60)}:${time}</div>
+            <div class="scbr_time">${Math.floor(ITEM_LIST[tmp1][i].duration / 60)}:${time}</div>
+            <div class="scbr_icon_box">
+                <div class="scbr_icon_cir" id="scbr_icon_hate">
+                    <svg class="scbr_icon scbr_hate_b scbr_icon_act" viewBox="0 0 24 24" preserveAspectRatio="xMidYMid meet" focusable="false" class="style-scope yt-icon" style="pointer-events: none;"><g class="style-scope yt-icon"><path d="M17,4h-1H6.57C5.5,4,4.59,4.67,4.38,5.61l-1.34,6C2.77,12.85,3.82,14,5.23,14h4.23l-1.52,4.94C7.62,19.97,8.46,21,9.62,21 c0.58,0,1.14-0.24,1.52-0.65L17,14h4V4H17z M10.4,19.67C10.21,19.88,9.92,20,9.62,20c-0.26,0-0.5-0.11-0.63-0.3 c-0.07-0.1-0.15-0.26-0.09 -0.47l1.52-4.94l0.4-1.29H9.46H5.23c-0.41,0-0.8-0.17-1.03-0.46c-0.12-0.15-0.25-0.4-0.18-0.72l1.34-6 C5.46,5.35,5.97,5,6.57,5H16v8.61L10.4,19.67z M20,13h-3V5h3V13z" class="style-scope yt-icon"></path></g></svg>
+                    <svg class="scbr_icon scbr_hate_f" viewBox="0 0 24 24" preserveAspectRatio="xMidYMid meet" focusable="false" class="style-scope yt-icon" style="pointer-events: none;"><g class="style-scope yt-icon"><path d="M18,4h3v10h-3V4z M5.23,14h4.23l-1.52,4.94C7.62,19.97,8.46,21,9.62,21c0.58,0,1.14-0.24,1.52-0.65L17,14V4H6.57 C5.5,4,4.59,4.67,4.38,5.61l-1.34,6C2.77,12.85,3.82,14,5.23,14z" class="style-scope yt-icon"></path></g></svg>
+                </div>
+                <div class="scbr_icon_cir" id="scbr_icon_like">
+                    <svg class="scbr_icon scbr_like_b scbr_icon_act" viewBox="0 0 24 24" preserveAspectRatio="xMidYMid meet" focusable="false" class="style-scope yt-icon" style="pointer-events: none;"><g class="style-scope yt-icon"><path d="M18.77,11h-4.23l1.52-4.94C16.38,5.03,15.54,4,14.38,4c-0.58,0-1.14,0.24-1.52,0.65L7,11H3v10h4h1h9.43 c1.06,0,1.98-0.67,2.19-1.61l1.34-6C21.23,12.15,20.18,11,18.77,11z M7,20H4v-8h3V20z M19.98,13.17l-1.34,6 C18.54,19.65,18.03,20,17.43,20H8v-8.61l5.6-6.06C13.79,5.12,14.08,5,14.38,5c0.26,0,0.5,0.11,0.63,0.3 c0.07,0.1,0.15,0.26,0.09,0.47l-1.52,4.94L13.18,12h1.35h4.23c0.41,0,0.8,0.17,1.03,0.46C19.92,12.61,20.05,12.86,19.98,13.17z" class="style-scope yt-icon"></path></g></svg>
+                    <svg class="scbr_icon scbr_like_f" viewBox="0 0 24 24" preserveAspectRatio="xMidYMid meet" focusable="false" class="style-scope yt-icon" style="pointer-events: none;"><g class="style-scope yt-icon"><path d="M3,11h3v10H3V11z M18.77,11h-4.23l1.52-4.94C16.38,5.03,15.54,4,14.38,4c-0.58,0-1.14,0.24-1.52,0.65L7,11v10h10.43 c1.06,0,1.98-0.67,2.19-1.61l1.34-6C21.23,12.15,20.18,11,18.77,11z" class="style-scope yt-icon"></path></g></svg>
+                </div>
+                <div class="scbr_icon_cir btn_more">
+                    <svg class="scbr_icon" viewBox="0 0 24 24" preserveAspectRatio="xMidYMid meet" focusable="false" class="style-scope yt-icon" style="pointer-events: none;"><g class="style-scope yt-icon"><path d="M12,16.5c0.83,0,1.5,0.67,1.5,1.5s-0.67,1.5-1.5,1.5s-1.5-0.67-1.5-1.5S11.17,16.5,12,16.5z M10.5,12 c0,0.83,0.67,1.5,1.5,1.5s1.5-0.67,1.5-1.5s-0.67-1.5-1.5-1.5S10.5,11.17,10.5,12z M10.5,6c0,0.83,0.67,1.5,1.5,1.5 s1.5-0.67,1.5-1.5S12.83,4.5,12,4.5S10.5,5.17,10.5,6z" class="style-scope yt-icon"></path></g></svg>
+                </div>
+                <div class="scbr_icon_rec">
+                    <svg class="scbr_icon chk_box_b scbr_icon_act" viewBox="0 0 24 24" preserveAspectRatio="xMidYMid meet" focusable="false" class="style-scope yt-icon" style="pointer-events: none;"><g class="style-scope yt-icon"><path d="M3 3V21H21V3H3ZM20 20H4V4H20V20Z" class="style-scope yt-icon"></path></g></svg>
+                    <svg class="scbr_icon chk_box_f" viewBox="0 0 24 24" preserveAspectRatio="xMidYMid meet" focusable="false" class="style-scope yt-icon" style="pointer-events: none;"><g class="style-scope yt-icon"><path d="M3 3V21H21V3H3ZM9.65 17L5.85 13.2L7.26 11.79L9.64 14.17L16.73 7.08L18.14 8.49L9.65 17Z" class="style-scope yt-icon"></path></g></svg>    
+                </div>
+            </div>
         </div>
     `
     $('.scbox_R').append(tmp)

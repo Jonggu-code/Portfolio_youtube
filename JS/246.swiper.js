@@ -1,5 +1,3 @@
-
-
 var swiper;
 var swiper1;
 var swiper2;
