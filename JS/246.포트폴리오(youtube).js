@@ -2,6 +2,11 @@ $(document).ready(function(){
 ///////////////////////  헤더 이벤트  ////////////////////////
 let win_width = false;
 
+    // side_pl_box 클릭이벤트
+    $(document).on('click','.side_pl_box', function(){
+        $('#side_storage').trigger('click')
+    });
+
     // 화면로드시 햄버버튼 반응형
     $(window).on('load',function(){
         if(window.innerWidth <= 1000) {
@@ -356,12 +361,6 @@ let win_width = false;
 
         $('#v_player').on('ended', function() {
             $('.pb_next').trigger('click')
-            let tmp1 = $('.pb_title_b').text()
-            let tmp2 = $('.pb_title_m').text()
-            let tmp3 = $('.pb_thumbnail > img').attr('src')
-            $('.music_title').text(tmp1)
-            $('.music_sub').text(tmp2)
-            $('.curr_picture > img').attr('src', tmp3)
         });
     }
 
@@ -542,6 +541,7 @@ let time = document.getElementsByClassName('pb_play_time')[0]
     // 앞으로 넘어가기
     $('.pb_next').click(function(){
         cate_chk = $('#v_player').attr('class').split('_')[0]
+
         if(cate_chk == 'kpop'){
             linked = (linked + 1) % $(ITEM_LIST)[2].length 
             streaming(2)
@@ -558,6 +558,12 @@ let time = document.getElementsByClassName('pb_play_time')[0]
             linked = (linked + 1) % $(ITEM_LIST)[5].length 
             streaming(5)
         }
+        let tmp1 = $('.pb_title_b').text()
+        let tmp2 = $('.pb_title_m').text()
+        let tmp3 = $('.pb_thumbnail > img').attr('src')
+        $('.music_title').text(tmp1)
+        $('.music_sub').text(tmp2)
+        $('.curr_picture > img').attr('src', tmp3)
     })
     
     // 뒤로 넘어가기
@@ -583,6 +589,12 @@ let time = document.getElementsByClassName('pb_play_time')[0]
             linked = linked - 1
             streaming(5)
         }
+        let tmp1 = $('.pb_title_b').text()
+        let tmp2 = $('.pb_title_m').text()
+        let tmp3 = $('.pb_thumbnail > img').attr('src')
+        $('.music_title').text(tmp1)
+        $('.music_sub').text(tmp2)
+        $('.curr_picture > img').attr('src', tmp3)
     });
 
 ////////////////   무한스크롤 관련   //////////////////

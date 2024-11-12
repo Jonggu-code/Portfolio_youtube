@@ -1,13 +1,7 @@
 const ITEM_LIST = [
     // 좌측 햄버거버튼 리스트
     [
-        {play_no: 2, title: 'Daily Music', master: '종구' },
-        {play_no: 3, title: 'BGM', master: '종구' },
-        {play_no: 4, title: 'K-POP 모음', master: '종구' },
-        {play_no: 5, title: '여러분의 음악', master: 'everyone' },
-        {play_no: 6, title: '국힙 플리', master: 'goodjob' },
-        {play_no: 'late', title: '나중에 볼 에피소드', master: '자동 재생목록' },
-        {play_no: 'recom', title: 'J-POP 모음', master: '자동 재생목록' }
+        {play_no: 2, title: '새로운 재생목록을 추가해보세요.', master: '' },
     ],
     // 메인페이지 뮤직차트 리스트 (박스)
     [
