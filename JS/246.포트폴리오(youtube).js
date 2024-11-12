@@ -1,5 +1,29 @@
 $(document).ready(function(){
-    // 햄버거버튼 클릭
+///////////////////////  헤더 이벤트  ////////////////////////
+let win_width = false;
+
+    // 화면로드시 햄버버튼 반응형
+    $(window).on('load',function(){
+        if(window.innerWidth <= 1000) {
+            $('.hamber_btn').trigger('click')
+            win_width = true;
+        }
+    });
+
+    // 사이드 메뉴 반응형
+    window.addEventListener('resize', function(){
+        let win_act = window.innerWidth;
+
+        if(win_act < 1000 && !win_width) {
+            win_width = true;
+            $('.hamber_btn').trigger('click')
+        }
+        else if(win_act > 1000 && win_width) {
+            win_width = false;
+            $('.hamber_btn').trigger('click')
+        }
+    });
+
     $(document).on('mousedown','.music_list_title',function(event){
         $(this).addClass('music_list_title_active')
     })
@@ -9,6 +33,7 @@ $(document).ready(function(){
         },10);
     })
 
+    // 햄버거버튼 클릭시 배경조정
     $(document).on('mousedown','.hamber_btn',function(event){
         $(this).addClass('hamber_active')
     })
@@ -18,6 +43,7 @@ $(document).ready(function(){
         },10);
     })
 
+    // 햄버거버튼 클릭
     $(document).on('click','.hamber_btn',function(){
         $('.side_menu').children(':not(.side_nav)').toggleClass('side_menubar_etc');
         $('.side_menu').toggleClass('side_menu_act');
@@ -50,6 +76,19 @@ $(document).ready(function(){
         $('#find_input').val("");
         $(this).hide();
     })
+
+    // 계정 클릭
+    let login_menu = true;
+    $(document).on('click','.master',function(){
+        if(login_menu == true){
+            login_new_window()
+            login_menu = false;
+        }
+        else{
+            $('.master').find('.login_menu').remove()
+            login_menu = true;
+        }
+    });
 
 ////////////  사이드메뉴(홈, 둘러보기, 보관함) 클릭 이벤트  //////////////////
 

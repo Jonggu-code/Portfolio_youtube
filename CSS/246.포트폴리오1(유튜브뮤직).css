@@ -87,7 +87,7 @@ a {
 /* /////////////////////////////////////////// */
 
 .header_L {
-    width: 240px;
+    width: 140px;
     height: 100%;
     display: flex;
     align-items: center;
@@ -181,11 +181,94 @@ a {
     width: 30px;
     height: 30px;
     border-radius: 50%;
-    overflow: hidden;
+    background: #135381;
+    color: #fff;
+    font-size: 12px;
+    font-weight: 900;
+    user-select: none;
+
+    position: relative;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
-.master > img {
+.master > p {
+    cursor: pointer;
+}
+
+/* 계정 클릭시 뜨는 뉴윈도우 */
+
+.login_menu {
+    width: 300px;
+    background: #393131;
+    border-radius: 15px;
+    box-sizing: border-box;
+
+    position: absolute;
+    top: 30px;
+    right: 0;
+
+    display: flex;
+    flex-wrap: wrap;
+}
+.login_menu_top {
     width: 100%;
-    height: 100%;
+    padding: 20px;
+    box-sizing: border-box;
+
+    display: flex;
+    flex-wrap: wrap;
+}
+.login_menu_top > .master {
+    width: 50px;
+    height: 50px;
+    font-size: 18px;
+    cursor: pointer;
+}
+.login_menu_mid, .login_menu_bot {
+    width: 100%;
+    padding: 10px 0;
+    border-top: 1px solid #6f6060;
+}
+.master_list {
+    width: 70%;
+    padding-left: 20px;
+    font-size: 16px;
+    font-weight: 400;
+}
+.master_list > p {
+    margin-top: 10px;
+    font-size: 14px;
+    color: #1a8edc;
+    cursor: pointer;
+}
+.master_list > p:hover {
+    text-decoration: underline;
+}
+.lmm_icon path {
+    fill: #bbb8b8;
+}
+.lmm_item {
+    padding: 8px 0;
+    padding-left: 20px;
+    display: flex;
+    cursor: pointer;
+}
+.lmm_item:hover {
+    background: #5f5252
+}
+.lmm_icon {
+    width: 26px;
+    height: 26px;
+}
+.lmm_txt {
+    font-size: 14px;
+    font-weight: 400;
+    margin-left: 20px;
+
+    display: flex;
+    align-items: center;
 }
 
 /* 
@@ -629,7 +712,6 @@ a {
 
 .main_storage {
     background-color: #000;
-    height: 1200px;
     width: 100%;
 }
 .st_main_page_box {
@@ -654,7 +736,6 @@ a {
 }
 .st_music_box {
     width: 100%;
-    height: auto;
     padding-top: 40px;
     padding-bottom: 40px;
 
@@ -695,7 +776,7 @@ a {
     color: #fff;
 }
 .st_mpbl_item {
-    width: 190px;
+    width: 230px;
     height: 60px;
     padding: 5px 0;
     border-top: 1px solid #1d1d1d;
@@ -1696,6 +1777,7 @@ a {
     height: 100%;
     padding-left: 10px;
     color: #fff;
+    overflow: hidden;
 
     display: flex;
     flex-wrap: wrap;
@@ -1822,7 +1904,6 @@ a {
 /////////////////////// swiper //////////////////////////////
 /////////////////////////////////////////////////////////////
 */
-
 .swiper-wrapper {
     position: relative;
     width: 100%;
@@ -1853,4 +1934,134 @@ a {
     top: 0;
     left: 0;
     text-align: center;
+}
+
+@media screen and (max-width: 1200px) {
+    .arSwiper1 {
+        width: 800px;
+    }
+    .arSwiper2 {
+        width: 800px;
+    }
+    .arSwiper3 {
+        width: 800px;
+    }
+}
+
+@media screen and (max-width: 1000px) {
+    .contents_area {
+        margin: 0 45px;
+    }
+    .main {
+        width: calc(100% - 80px);
+        margin-left: 80px;
+    }
+    .main_page_box {
+        /* width: calc(100% - 90px); */
+    }
+    .search_box {
+        width: 400px;
+    }
+
+    /* 보관함 리스트 관련 */
+    .st_main_page_box {
+        margin: 0;
+    }
+    .scbox_main {
+        flex-wrap: wrap;
+    }
+    .scbox_L {
+        width: 100%;
+        height: auto;
+        margin-top: 30px;
+        background: #000;
+    }
+    .scbox_func {
+        width: 50px;
+        height: 50px;
+    }
+    .scbox_func > svg {
+        width: 40px;
+        height: 40px;
+    }
+    .scbox_R {
+        width: 100%;
+        overflow: visible;
+    }
+    .scbr_control_box {
+        left: 25%;
+    }
+
+    /* 메인 플레이어 관련 */
+    .main_player {
+        width: calc(100% - 80px);
+        height: 500px;
+        left: 80px;
+        flex-wrap: wrap;
+        overflow: visible;
+    }
+    .player_L {
+        width: 100%;
+        height: 450px;
+    }
+    .player_R {
+        width: 100%;
+        height: 350px;
+    }
+    .music_list {
+        width: 100%;
+        margin: 0;
+
+    }
+
+    /* 하단바 관련 */
+    .player_bar {
+        gap: 0px;
+    }
+    .loop, .loop_one, .random {
+        display: none;
+    }
+    .pb_right_control {
+        width: auto;
+    }
+    .player_updown {
+        padding-right: 10px;
+    }
+    .pb_center {
+        width: calc(100% - 420px);
+    }
+    .pb_btn_box {
+        display: none;
+    }
+}
+
+@media screen and (max-width: 700px) {
+    .main_page_box {
+        width: 500px;
+    }
+    .mp_big_title {
+        font-size: 24px;
+        display: flex;
+        align-items: flex-end;
+    }
+    .mp_mini_title {
+        display: flex;
+        align-items: flex-end;
+    }
+    .search_box {
+        display: none;
+    }
+    .main_storage {
+        margin: 0
+    }
+    .st_main_page_box {
+        width: 500px;
+        margin: auto;
+    }
+    .volume_bar, .volume_icon, .muted_icon {
+        display: none !important;
+    }
+    .pb_center {
+        width: calc(100% - 320px);
+    }
 }

@@ -13,8 +13,22 @@ var swiper11;
 
 function swiper_event() {
     swiper = new Swiper(".mySwiper0", {
-        slidesPerView: 5,
-        slidesPerGroup: 5,
+        slidesPerView: 2,
+        slidesPerGroup: 2,
+        breakpoints: {
+            700: {
+                slidesPerView: 3,
+                slidesPerGroup: 3
+            },
+            1000: {
+                slidesPerView: 4,
+                slidesPerGroup: 4
+            },
+            1299: {
+                slidesPerView: 5,
+                slidesPerGroup: 5
+            },
+        },
         spaceBetween: 30,
         pagination: {
             el: ".swiper-pagination",
@@ -28,8 +42,22 @@ function swiper_event() {
         speed: 700
     });
     swiper1 = new Swiper(".mySwiper1", {
-        slidesPerView: 5,
-        slidesPerGroup: 5,
+        slidesPerView: 2,
+        slidesPerGroup: 2,
+        breakpoints: {
+            700: {
+                slidesPerView: 3,
+                slidesPerGroup: 3
+            },
+            1000: {
+                slidesPerView: 4,
+                slidesPerGroup: 4
+            },
+            1299: {
+                slidesPerView: 5,
+                slidesPerGroup: 5
+            },
+        },
         spaceBetween: 30,
         pagination: {
             el: ".swiper-pagination",
@@ -43,8 +71,22 @@ function swiper_event() {
         speed: 700
     });
     swiper2 = new Swiper(".mySwiper2", {
-        slidesPerView: 5,
-        slidesPerGroup: 5,
+        slidesPerView: 2,
+        slidesPerGroup: 2,
+        breakpoints: {
+            700: {
+                slidesPerView: 3,
+                slidesPerGroup: 3
+            },
+            1000: {
+                slidesPerView: 4,
+                slidesPerGroup: 4
+            },
+            1299: {
+                slidesPerView: 5,
+                slidesPerGroup: 5
+            },
+        },
         spaceBetween: 30,
         pagination: {
             el: ".swiper-pagination",
@@ -58,8 +100,22 @@ function swiper_event() {
         speed: 700
     });
     swiper3 = new Swiper(".mySwiper3", {
-        slidesPerView: 5,
-        slidesPerGroup: 5,
+        slidesPerView: 2,
+        slidesPerGroup: 2,
+        breakpoints: {
+            700: {
+                slidesPerView: 3,
+                slidesPerGroup: 3
+            },
+            1000: {
+                slidesPerView: 4,
+                slidesPerGroup: 4
+            },
+            1299: {
+                slidesPerView: 5,
+                slidesPerGroup: 5
+            },
+        },
         spaceBetween: 30,
         pagination: {
             el: ".swiper-pagination",
@@ -74,8 +130,22 @@ function swiper_event() {
     });
 
     swiper4 = new Swiper(".mySwiper4", {
-        slidesPerView: 5,
-        slidesPerGroup: 5,
+        slidesPerView: 2,
+        slidesPerGroup: 2,
+        breakpoints: {
+            700: {
+                slidesPerView: 3,
+                slidesPerGroup: 3
+            },
+            1000: {
+                slidesPerView: 4,
+                slidesPerGroup: 4
+            },
+            1299: {
+                slidesPerView: 5,
+                slidesPerGroup: 5
+            },
+        },
         spaceBetween: 30,
         pagination: {
             el: ".swiper-pagination",
@@ -90,8 +160,22 @@ function swiper_event() {
     });
     
     swiper5 = new Swiper(".mySwiper5", {
-        slidesPerView: 5,
-        slidesPerGroup: 5,
+        slidesPerView: 2,
+        slidesPerGroup: 2,
+        breakpoints: {
+            700: {
+                slidesPerView: 3,
+                slidesPerGroup: 3
+            },
+            1000: {
+                slidesPerView: 4,
+                slidesPerGroup: 4
+            },
+            1299: {
+                slidesPerView: 5,
+                slidesPerGroup: 5
+            },
+        },
         spaceBetween: 30,
         pagination: {
             el: ".swiper-pagination",
@@ -105,8 +189,22 @@ function swiper_event() {
         speed: 700
     });
     swiper6 = new Swiper(".arSwiper0", {
-        slidesPerView: 5,
-        slidesPerGroup: 5,
+        slidesPerView: 2,
+        slidesPerGroup: 2,
+        breakpoints: {
+            700: {
+                slidesPerView: 3,
+                slidesPerGroup: 3
+            },
+            1000: {
+                slidesPerView: 4,
+                slidesPerGroup: 4
+            },
+            1299: {
+                slidesPerView: 5,
+                slidesPerGroup: 5
+            },
+        },
         spaceBetween: 30,
         pagination: {
             el: ".swiper-pagination",
@@ -120,9 +218,18 @@ function swiper_event() {
         speed: 700
     });
     swiper7 = new Swiper(".arSwiper1", {
-        slidesPerView: 3,
-        slidesPerGroup: 3,
-        spaceBetween: 1,
+        slidesPerView: 2,
+        slidesPerGroup: 1,
+        breakpoints: {
+            1000: {
+                slidesPerView: 2,
+                slidesPerGroup: 2
+            },
+            1299: {
+                slidesPerView: 3,
+                slidesPerGroup: 3
+            },
+        },
         pagination: {
             el: ".swiper-pagination",
             clickable: true,
@@ -135,8 +242,18 @@ function swiper_event() {
         speed: 700
     });
     swiper8 = new Swiper(".arSwiper2", {
-        slidesPerView: 4,
-        slidesPerGroup: 3,
+        slidesPerView: 3,
+        slidesPerGroup: 2,
+        breakpoints: {
+            1000: {
+                slidesPerView: 3,
+                slidesPerGroup: 3
+            },
+            1299: {
+                slidesPerView: 4,
+                slidesPerGroup: 4
+            },
+        },
         spaceBetween: 30,
         pagination: {
             el: ".swiper-pagination",
@@ -150,8 +267,14 @@ function swiper_event() {
         speed: 700
     });
     swiper9 = new Swiper(".arSwiper3", {
-        slidesPerView: 3,
-        slidesPerGroup: 3,
+        slidesPerView: 2,
+        slidesPerGroup: 1,
+        breakpoints: {
+            1399: {
+                slidesPerView: 3,
+                slidesPerGroup: 3
+            },
+        },
         spaceBetween: 30,
         pagination: {
             el: ".swiper-pagination",
@@ -165,9 +288,13 @@ function swiper_event() {
         speed: 700
     });
     swiper10 = new Swiper(".stSwiper0", {
-        slidesPerView: 2,
-        slidesPerGroup: 2,
+        slidesPerView: 1,
+        slidesPerGroup: 1,
         breakpoints: {
+            700: {
+                slidesPerView: 2,
+                slidesPerGroup: 2 
+            },
             1299: {
                 slidesPerView: 3,
                 slidesPerGroup: 3 
@@ -186,12 +313,16 @@ function swiper_event() {
         speed: 700
     });
     swiper11 = new Swiper(".stSwiper1", {
-        slidesPerView: 2,
-        slidesPerGroup: 2,
+        slidesPerView: 1,
+        slidesPerGroup: 1,
         breakpoints: {
+            700: {
+                slidesPerView: 2,
+                slidesPerGroup: 2 
+            },
             1299: {
                 slidesPerView: 3,
-                slidesPerGroup: 3
+                slidesPerGroup: 3 
             }
         },
         spaceBetween: 0,
