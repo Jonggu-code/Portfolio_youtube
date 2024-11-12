@@ -1969,12 +1969,19 @@ a {
     }
     .scbox_main {
         flex-wrap: wrap;
+        height: auto;
     }
     .scbox_L {
         width: 100%;
         height: auto;
         margin-top: 30px;
         background: #000;
+    }
+    .scbox_R {
+        width: 100%;
+        max-height: inherit;
+        overflow: visible;
+        padding-bottom: 50px;
     }
     .scbox_func {
         width: 50px;
@@ -1983,10 +1990,6 @@ a {
     .scbox_func > svg {
         width: 40px;
         height: 40px;
-    }
-    .scbox_R {
-        width: 100%;
-        overflow: visible;
     }
     .scbr_control_box {
         left: 25%;
